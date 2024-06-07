@@ -1,0 +1,206 @@
+<%- include("partials/head.ejs")%>
+
+<body>
+    <div class="page-wrapper">
+        <%- include("partials/navbar.ejs")%>
+
+        <main class="main">
+        	<div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
+        		<div class="container">
+        			<h1 class="page-title">My Account<span>Profile</span></h1>
+        		</div><!-- End .container -->
+        	</div><!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item active" aria-current="page"><a href="/profile">My Account</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Security</li>
+                       
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+	                <div class="container">
+	                	<div class="row">
+	                		<aside class="col-md-4 col-lg-3">
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-0">
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-dashboard-link" href="/profile" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-orders-link"  href="/profile/orders"  aria-controls="tab-orders" aria-selected="false">Orders</a>
+								    </li>
+								  
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-address-link"  href="/profile/addresses" aria-controls="tab-address" aria-selected="false">Addresses</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link active" id="tab-account-link"  href="/profile/security"  aria-controls="tab-account" aria-selected="true">Security</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link " id="tab-account-link"  href="/profile/wallet"  aria-controls="tab-account" aria-selected="false">My wallet</a>
+								    </li>
+								    <li class="nav-item pt-3">
+                                        <form action="/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+	                		</aside><!-- End .col-lg-3 -->
+
+	                		<div class="col-md-8 col-lg-9">
+	                			<% if( alert.length>0){%>
+				
+									<div class="d-flex flex-column align-items-center justify-content-center">
+										<div class="alert alert-danger alert-dismissible fade show" role="alert">
+											<%= alert %>
+											<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+										  </div>
+									</div>
+									<%}%>
+	                			<% if( success.length>0){%>
+				
+									<div class="d-flex flex-column align-items-center justify-content-center">
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											<%= success %>
+											<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+										  </div>
+									</div>
+									<%}%>
+									<div class="fs-3" id="tab-address">
+								    
+								    	<form action="/profile/<%=user._id%>/security?_method=PATCH" method="post" id="resetPassSubmit">
+			                				<div class="row">
+			                					<div class="col-sm-12">
+			                						<label>Current password</label>
+			                						<input type="password" class="form-control" name="currentPassword" id="curr_password" onkeyup="currPassCheck(this)">
+													<span  class="text-danger fs-5" id="errorMsgCurrPass"></span> 
+			                					</div><!-- End .col-sm-6 -->
+												
+			                					<div class="col-sm-12">
+			                						<label>New password</label>
+			                						<input type="password" class="form-control" name="newPassword" id="new_password" onkeyup="passwordCheck(this)">
+													<span  class="text-danger fs-5" id="errorMsgPass"></span>
+			                					</div><!-- End .col-sm-6 -->
+			                				</div><!-- End .row -->
+											<div class="row">
+												<div class="col-sm-12">
+													<label>Confirm password</label>
+													<input type="password" class="form-control" name="confirmPassword" id="confirm_password" onkeyup="check(this)" >
+													<span  class="text-danger fs-5" id="errorMsgConPass"></span> 
+												</div>
+
+											</div>	
+
+		            				
+											<div class="btn-wrap d-flex justify-content-around pt-3">
+											<div class="btn-wrap">
+												<a href="/profile/security" class="btn btn-outline-primary btn-rounded">Cancel</a>
+											</div>
+											<div>
+		                					<button type="submit" class="btn btn-outline-primary-2">
+			                					<span>SAVE</span>
+			            						<i class="icon-long-arrow-right"></i>
+			                				</button>
+											</div>
+											</div>
+			                			</form>
+								    </div><!-- .End .tab-pane -->
+								 
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+	                </div><!-- End .container -->
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+        <%- include("partials/footer.ejs")%>
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <%- include("partials/mobileview.ejs")%>
+	<script>
+		const resetPassSubmit = document.getElementById('resetPassSubmit');
+        const newPass = document.getElementById('new_password')
+            const confPass = document.getElementById('confirm_password');
+            const errorMsgConPass = document.getElementById('errorMsgConPass');
+            const errorMsgPass = document.getElementById('errorMsgPass');
+			const errorMsgCurrPass = document.getElementById('errorMsgCurrPass');
+			const curr_password  = document.getElementById('curr_password');
+        resetPassSubmit.addEventListener('submit',(e)=>{
+
+			if(curr_password.value.length == 0 ){
+				e.preventDefault();
+				errorMsgCurrPass.innerText= "Enter current password";
+			}
+           
+            if(newPass.value.length == 0 ){
+                e.preventDefault();
+                errorMsgPass.innerText = "Enter a password";
+            }
+            if(confPass.value.length ==0 ){
+                e.preventDefault();
+                errorMsgConPass.innerText = "Field should not be empty"
+            }
+            if(newPass.value !== confPass.value){
+                e.preventDefault();
+                errorMsgConPass.innerText = "Password not matching"
+            }
+            if(errorMsgConPass.value.length>0 && errorMsgPass.value.length >0 && errorMsgCurrPass.value.length >0 ){
+                e.preventDefault();
+            }
+        })
+        function currPassCheck(elem){
+			if(elem.value.length= 0 ){
+				errorMsgCurrPass.innerText = "Enter current password"
+			}else{
+				errorMsgCurrPass.innerText = "";
+			}
+		}
+  function check(elem){
+      if(elem.value.length>0){
+        if(elem.value!=newPass.value){
+          errorMsgConPass.innerText= "Confirm password does not match";
+        }else{
+          errorMsgConPass.innerText= "";
+        }
+      }
+
+}
+function passwordCheck(elem){
+  if(elem.value.length<6){
+        errorMsgPass.innerText= "Password length must be minimum 6 characters";
+      }else if (elem.value.length>15){
+        errorMsgPass.innerText= "Password length must be in between 6-15 characters";
+      } else if(elem.value.search(/[a-z]/) < 0) { 
+        errorMsgPass.innerText= "Password must contain lowecase letter";
+        } else if(elem.value.search(/[A-Z]/) < 0) { 
+        errorMsgPass.innerText= "Password must contain at least one uppercase letter";
+        } else if(elem.value.search(/[0-9]/) < 0) { 
+          errorMsgPass.innerText= "Password must contain at least one number";
+        } else{
+          errorMsgPass.innerText= "";
+        }
+}
+	</script>
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/assets/js/superfish.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+
+</html>

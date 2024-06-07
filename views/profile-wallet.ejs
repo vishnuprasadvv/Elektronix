@@ -1,0 +1,170 @@
+<%- include("partials/head.ejs")%>
+
+<body>
+    <div class="page-wrapper">
+        <%- include("partials/navbar.ejs")%>
+
+        <main class="main">
+        	<div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
+        		<div class="container">
+        			<h1 class="page-title">My Account<span>Profile</span></h1>
+        		</div><!-- End .container -->
+        	</div><!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+	                <div class="container">
+	                	<div class="row">
+	                		<aside class="col-md-4 col-lg-3">
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-dashboard-link" href="/profile" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-orders-link"  href="/profile/orders"  aria-controls="tab-orders" aria-selected="false">Orders</a>
+								    </li>
+								  
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-address-link"  href="/profile/addresses" aria-controls="tab-address" aria-selected="false">Addresses</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-account-link"  href="/profile/security"  aria-controls="tab-account" aria-selected="false">Security</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link active" id="tab-account-link"  href="/profile/wallet"  aria-controls="tab-account" aria-selected="true">My wallet</a>
+								    </li>
+								    <li class="nav-item pt-3">
+                                        <form action="/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+	                		</aside><!-- End .col-lg-3 -->
+
+	                		<div class="col-md-8 col-lg-9">
+								<% if( success.length>0){%>
+				
+										<div class="d-flex flex-column align-items-center justify-content-center">
+											<div class="alert alert-success alert-dismissible fade show" role="alert">
+												<%= success %>
+												<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+											  </div>
+										</div>
+										<%}%>
+	                			<div class="tab-content ">
+								    
+									<div><h3 class=" text-center">Wallet</h3></div>
+										<% if(wallet==null || wallet.transactions.length<=0){%>
+											<h3 class="text-center">No transactions</h3>
+										<%}else{%>
+											<div class="col">
+												<div class="align-items-end text-end fs-3 fw-bold p-5">
+													<span class="border rounded p-3 bg-primary text-white">
+														Wallet Amount : &nbsp;₹ &nbsp;<%= wallet.balance %>
+													</span>
+												</div>
+											</div>
+									<div class="row">		
+											<% for(let item of wallet.transactions){%>
+													<a  style="color: #000000;">
+													<div class="card card-dashboard" onMouseOver="this.style.background='#c7c7c7'"
+													onMouseOut="this.style.background='#f9f9f9'">
+													<div class="p-4">
+													<div class="row d-flex flex-row align-items-center" >
+													<div class="col col-4">
+														<div class="row align-items-center">
+															
+															<div class="col-6">
+															<span>Refund </span>
+															</div>
+														</div>
+													</div>
+													<div class="col col-4">
+														
+														<div>
+														<small>credited on : 
+															<%
+															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const date =months[item.date.getMonth()]+" "+item.date.getDate()+", "+item.date.getFullYear() %>
+															<%= date %>
+														</small>
+														</div>
+													</div>
+													<div class="col col-4 align-items-center text-end"><span class="fs-4 fw-bold text-success"> &plus; &nbsp;₹ &nbsp;<%= item.amount %></span></div>
+												</div>
+													
+											</div>
+										</div><!-- End .card-dashboard -->
+									</a>
+									<%}%>
+												
+								    </div><!-- End .col-lg-6 -->
+											
+								    		
+								    </div><!-- End .row -->
+								<%}%>
+										
+								</div>
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+						
+	                </div><!-- End .container -->
+					<div class="bottom text-center">
+						<nav aria-label="Page navigation">
+							<ul class="pagination justify-content-center">
+								
+								<li class="page-item <%if(currentPage==1){%>disabled<%}%>">
+									<a class="page-link page-link-prev" href="?page=<%= currentPage - 1 %>" aria-label="Previous" tabindex="-1">
+										<span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+									</a>
+								</li>
+								<%for(let j=1; j <= totalPages; j++){%>
+
+									<li class="page-item <% if( j==currentPage){%>active <%}%>" aria-current="page"><a class="page-link" href="?page=<%= j %>"><%= j %></a></li>
+								<%}%>
+								<li class="page-item-total">of <%= totalPages %></li>
+								<li class="page-item <%if(currentPage==totalPages){%>disabled<%}%>">
+									<a class="page-link page-link-next" href="?page=<%= currentPage+1 %>" aria-label="Next">
+										Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+        <%- include("partials/footer.ejs")%>
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <%- include("partials/mobileview.ejs")%>
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/ssets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/assets/js/superfish.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+
+</html>

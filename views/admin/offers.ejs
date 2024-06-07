@@ -1,0 +1,264 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <div class="page-wrapper">
+      <header class="header header-intro-clearance header-4">
+        
+    
+        <div class="header-middle">
+            <div class="container">
+                <div class="header-left">
+                    <button class="mobile-menu-toggler">
+                        <span class="sr-only"></span>
+                        <i class="icon-bars"></i>
+                    </button>
+                    
+                    <a href="/" class="logo">
+                        <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
+                    </a>
+                </div><!-- End .header-left -->
+    
+                <div class="header-center">
+                    <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                        <form action="#" method="get">
+                            <div class="header-search-wrapper search-wrapper-wide">
+                                <label for="q" class="sr-only"></label>
+                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            </div><!-- End .header-search-wrapper -->
+                        </form>
+                    </div><!-- End .header-search -->
+                </div>
+    
+                <div class="header-right">
+                    <div class="dropdown compare-dropdown">
+                        <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                                <p>Profile</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div><!--End .header-right -->
+            </div><!--End .container -->
+        </div> <!--End .header-middle-->
+    
+        
+    </header><!-- End .header -->
+
+        <main class="main bg-light">
+        	
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item active" aria-current="page">Offers</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+                
+	                <div class="container">
+	                	<div class="row g-0">
+                            <div class="col-lg-2 col-md-4 border bg-white">
+	                		
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-dashboard-link"  href="/admin/dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+                                    <li class="nav-item p-3">
+								        <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab" aria-controls="tab-address" aria-selected="false">Sales</a>
+								    </li>
+                    
+								    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/products" role="tab" aria-controls="tab-orders" aria-selected="false">Products</a>
+								    </li>
+								    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/category" role="tab" aria-controls="tab-orders" aria-selected="false">Product category</a>
+								    </li>
+                                    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/brands" role="tab" aria-controls="tab-orders" aria-selected="false">Product Brands</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab" aria-controls="tab-downloads" aria-selected="false">Orders</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab" aria-controls="tab-address" aria-selected="false">Users</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab" aria-controls="tab-address" aria-selected="false">Coupons</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link active" id="tab-address-link" href="/admin/offers" role="tab" aria-controls="tab-address" aria-selected="true">Offers</a>
+								    </li>
+								   
+								    <li class="nav-item pt-3 text-center">
+                                        <form action="/admin/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+	                		
+                        </div>
+                      <!-- CONTENT -->
+	                		<div class="col-lg-10 col-md-8">
+                                <div class="layout-container  mb-2 bg-white">
+                                   
+                                    
+                                    <div class="btn-wrap d-flex justify-content-end p-3"> 
+                                        <a href="/admin/offers/create" class="btn btn-outline-primary-2 btn-rounded"><i class="icon-plus"></i>CREATE OFFER</a>
+                                        
+                                    </div>
+
+                                </div>
+	                			<div class="w-100 h-100 bg-white p-3">
+								   
+                                    <div class="layout-container col-lg-12" id="productOfferList">
+                                        <table class="table table-resposive">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" scope="col">No.</th>
+                                                    <th class="text-center" scope="col">Offer</th>
+                                                    <th class="text-center" scope="col">Description</th>
+                                                    <th class="text-center" scope="col">Start date</th>
+                                                    <th class="text-center" scope="col">End date</th>
+                                                    <th class="text-center" scope="col">Action</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                    
+                                            <tbody>
+                                                <% for(let i=0;i<CategoryOffers.length;i++){%>
+                                                
+                                                <tr class="text-center align-items-center">
+                                                    <td> <%=  currentPage* limit -(limit) + i+1 %></td>
+                                                    <td class="col-2"><%=CategoryOffers[i].offerName%></td>
+                                                    <td class="col-2"><%=CategoryOffers[i].description%></td>
+                                                    <%const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const startdate =months[CategoryOffers[i].startDate.getMonth()]+" "+CategoryOffers[i].startDate.getDate()+", "+CategoryOffers[i].startDate.getFullYear() %>
+															
+                                                    <td> <%= startdate %></td>
+                                                    <%const enddate =months[CategoryOffers[i].endDate.getMonth()]+" "+CategoryOffers[i].endDate.getDate()+", "+CategoryOffers[i].endDate.getFullYear() %>
+                                                    
+                                                    <td><%= enddate %></td>
+                                                    
+                                                    <td class="action-col">
+                                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                            <a href="/admin/offers/<%=CategoryOffers[i]._id%>/edit-category-offer" class="btn btn-outline-primary-2"><i class="icon-edit"></i></a>
+                                                            <form class="deleteCategoryOfferForm" action="/admin/offers/<%=CategoryOffers[i]._id%>/delete-category-offer?_method=PATCH" method="post">
+                                                                <button class="btn btn-outline-danger deleteBtn" type="submit" ><i class="icon-close"></i></button>
+                                                            </form>
+                                                          </div>
+                                                    </td>
+                                                </tr>
+                                                <%}%>
+                                                
+                                                
+                                            </tbody>
+                                        </table><!-- End .table table-wishlist -->
+                                        
+                                    </div><!-- End .container -->
+                                    
+								    </div><!-- .End .tab-pane -->
+								</div>
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+                        <!-- Pagination -->
+                    <div class="bottom">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                
+                                <li class="page-item <%if(currentPage==1){%>disabled<%}%>">
+                                    <a class="page-link page-link-prev" href="?page=<%= currentPage - 1 %>" aria-label="Previous" tabindex="-1">
+                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+                                    </a>
+                                </li>
+                                <%for(let j=1; j <= totalPages; j++){%>
+
+                                    <li class="page-item <% if( j==currentPage){%>active <%}%>" aria-current="page"><a class="page-link" href="?page=<%= j %>"><%= j %></a></li>
+                                <%}%>
+                                <li class="page-item-total">of <%= totalPages %></li>
+                                <li class="page-item <%if(currentPage==totalPages){%>disabled<%}%>">
+                                    <a class="page-link page-link-next" href="?page=<%= currentPage+1 %>" aria-label="Next">
+                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        </div>
+	                </div><!-- End .container -->
+                    
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+       
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+ 
+    <%- include('partials/bottom')%>
+    <script>
+        toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+       $(document).ready(()=>{
+        let toast_success = '<%= success%>';
+        if(toast_success!=""){
+            toastr.success(toast_success)
+        }
+       })
+    </script>
+    <script>
+		 const deleteForm = document.querySelectorAll('.deleteCategoryOfferForm').forEach(form=>{
+
+         
+            form.addEventListener('submit',(e)=>{
+			e.preventDefault();
+			Swal.fire({
+				title: "Are you sure?",
+				text: "You won't be able to revert this!",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Yes, delete it!"
+				}).then((result) => {
+				if (result.isConfirmed) {
+					form.submit()
+					Swal.fire({
+					title: "Deleted!",
+					text: "Your file has been deleted.",
+					icon: "success"
+					});
+				}
+				});
+		})
+    })
+
+
+	</script>
+

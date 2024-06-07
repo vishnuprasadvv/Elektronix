@@ -1,0 +1,138 @@
+<%- include("partials/head.ejs")%>
+
+<body>
+    <div class="page-wrapper">
+        <%- include("partials/navbar.ejs")%>
+
+        <main class="main">
+        	<div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
+        		<div class="container">
+        			<h1 class="page-title">My Account<span>Profile</span></h1>
+        		</div><!-- End .container -->
+        	</div><!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item" aria-current="page">My Account</li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                        <li class="breadcrumb-item active" aria-current="page"><%=order.order_id%>	</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+	                <div class="container">
+	                	<div class="row">
+	                		<aside class="col-md-4 col-lg-3">
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-dashboard-link" href="/profile" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link active" id="tab-orders-link"  href="/profile/orders"  aria-controls="tab-orders" aria-selected="true">Orders</a>
+								    </li>
+								  
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-address-link"  href="/profile/addresses" aria-controls="tab-address" aria-selected="false">Addresses</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-account-link"  href="/profile/security"  aria-controls="tab-account" aria-selected="false">Security</a>
+								    </li>
+									<li class="nav-item">
+								        <a class="nav-link" id="tab-account-link"  href="/profile/wallet"  aria-controls="tab-account" aria-selected="false">My wallet</a>
+								    </li>
+								    <li class="nav-item pt-3">
+                                        <form action="/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+	                		</aside><!-- End .col-lg-3 -->
+
+	                		<div class="col-md-8 col-lg-9">
+								
+	                			<div class="tab-content ">
+								    
+									<div><h3 class=" text-center">Reason for cancellation</h3></div>
+									
+													
+											<div class="card card-dashboard p-3" >
+												<form action="/profile/orders/<%=order._id%>/cancel" method="post">
+													<div class="p-2">
+														<label for="cancelReason" class="fs-4">Enter the reason for cancellation</label>
+														<textarea name="cancelReason" id="cancelReason" class="form-control bg-white"></textarea>
+													</div>
+													<div class="row">
+														<div class="p-4 col text-end	">
+														<a href="/profile/orders/<%=order.order_id%>" class="btn btn-primary">Back</a>
+														</div>
+														<div class="p-4 col text-start">
+														<button type="submit" class="btn btn-danger">Cancel Order</button>
+														</div>
+													</div>
+												</form>
+													
+											</div>
+												
+											</div>
+											
+											
+											
+								    	
+								</div>
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+	                </div><!-- End .container -->
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+        <%- include("partials/footer.ejs")%>
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <%- include("partials/mobileview.ejs")%>
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/ssets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/assets/js/superfish.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+	<script>
+		const form = document.getElementById('invoiceDownloadForm');
+		form.addEventListener('submit',async(e)=>{
+			e.preventDefault();
+			const orderId = form.getAttribute('data-id')
+			const response = await fetch('/download-invoice/'+orderId, { 
+        	method: 'POST',
+        	headers: {
+          		'Content-Type': 'application/json'
+        	},
+        	
+      });
+	  const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `invoice.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+		})
+	</script>
+</body>
+
+
+</html>

@@ -1,0 +1,253 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <div class="page-wrapper">
+      <header class="header header-intro-clearance header-4">
+        
+    
+        <div class="header-middle">
+            <div class="container">
+                <div class="header-left">
+                    <button class="mobile-menu-toggler">
+                        <span class="sr-only"></span>
+                        <i class="icon-bars"></i>
+                    </button>
+                    
+                    <a href="/" class="logo">
+                        <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
+                    </a>
+                </div><!-- End .header-left -->
+    
+                <div class="header-center">
+                    <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                        <form action="#" method="get">
+                            <div class="header-search-wrapper search-wrapper-wide">
+                                <label for="q" class="sr-only"></label>
+                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            </div><!-- End .header-search-wrapper -->
+                        </form>
+                    </div><!-- End .header-search -->
+                </div>
+    
+                <div class="header-right">
+                    <div class="dropdown compare-dropdown">
+                        <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                                <p>Profile</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div><!--End .header-right -->
+            </div><!--End .container -->
+        </div> <!--End .header-middle-->
+    
+        
+    </header><!-- End .header -->
+
+        <main class="main bg-light">
+        	
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item"><a href="/admin/brands">Coupon</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit coupon</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+                
+	                <div class="container">
+	                	<div class="row g-0">
+                            <div class="col-lg-2 col-md-4 border bg-white">
+	                		
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-dashboard-link"  href="/admin/dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+                                    <li class="nav-item p-3">
+								        <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab" aria-controls="tab-address" aria-selected="false">Sales</a>
+								    </li>
+								    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/products" role="tab" aria-controls="tab-orders" aria-selected="false">Products</a>
+								    </li>
+								    <li class="nav-item p-3 ">
+								        <a class="nav-link  " id="tab-orders-link"  href="/admin/category" role="tab" aria-controls="tab-orders" aria-selected="true">Product category</a>
+								    </li>
+                                    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/brands" role="tab" aria-controls="tab-orders" aria-selected="false">Product Brands</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab" aria-controls="tab-downloads" aria-selected="false">Orders</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab" aria-controls="tab-address" aria-selected="false">Users</a>
+								    </li>
+                                    <li class="nav-item p-3">
+								        <a class="nav-link active" id="tab-address-link" href="/admin/coupon" role="tab" aria-controls="tab-address" aria-selected="true">Coupons</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab" aria-controls="tab-address" aria-selected="false">Offers</a>
+								    </li>
+								   
+								    <li class="nav-item pt-3 text-center">
+                                        <form action="/admin/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+	                		
+                        </div>
+                      <!-- CONTENT -->
+	                		<div class="col-lg-10 ">
+                              
+                                  
+	                			<div class="w-100 h-100">
+                                    <div class="fluid-container p-3 ">
+                                        <form action="/admin/coupon/<%=getCoupon._id%>/edit?_method=PUT" method="post" id="categoryFormSubmit">
+                                            <div class="row bg-white">
+                                                <div class="col-lg-12 ">
+                                                    <h2 class="checkout-title">Edit Coupon</h2><!-- End .checkout-title -->
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label>Coupon code</label>
+                                                                <input type="text" id="code"  class="form-control" name="code" value="<%=getCoupon.code%>" required>
+                                                                <span class="text-danger fs-5" id="errorMsgName"></span>
+                                                            </div><!-- End .col-sm-6 -->
+                                                            <div>
+                                                                <label>Description</label>
+                                                                <input type="text" id="code"  class="form-control" name="description" value="<%=getCoupon.description%>" required>
+                                                                <span class="text-danger fs-5" id="errorMsgDescription"></span>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <label for="discountType">Discount Type:</label>
+                                                                <select id="discountType" name="discountType" required class="form-control ">
+                                                                    <option value="percentage" <% if(getCoupon.discountType=='percentage'){%> selected='selected'<%}%>>Percentage</option>
+                                                                    <option value="fixed" <% if(getCoupon.discountType=='fixed'){%> selected='selected'<%}%>>Fixed</option>
+                                                                </select>
+                                                            </div><!-- End .col-sm-6 -->
+                                    
+                                                            <div class="col-sm-4">
+                                                                <label for="discountValue">Discount Value:</label>
+                                                                <input type="number" id="discountValue" name="discountValue" class="form-control" value="<%= getCoupon.discountValue%>" required>
+                                                            </div><!-- End .col-sm-4 -->
+                                                            
+                                                            <div class="col-4">
+                                                                <label for="expirationDate">Expiration Date:</label>
+                                                                <input type="date" id="expirationDate" name="expirationDate" class="form-control" value="" required>
+                                                            </div>
+                                                            <div>
+                                                                <label for="usageLimit">Usage Limit:</label>
+                                                                <input type="number" id="usageLimit" name="usageLimit" class="form-control" value="<%= getCoupon.usageLimit%>" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-wrap d-flex justify-content-around pt-3">
+                                                            <div class="btn-wrap">
+                                                                <a href="/admin/coupon" class="btn btn-outline-primary btn-rounded">Cancel</a>
+                                                            </div>
+                                                            <div class="btn-wrap"> 
+                                                                <button type="submit" class="btn btn-primary btn-rounded">SAVE CHANGES</button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                       
+                                                    </div><!-- End .col-lg-9 -->
+                                                
+                                            </div><!-- End .row -->
+                                        </form>
+                                    </div>
+								    </div><!-- .End .tab-pane -->
+								</div>
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+	                </div><!-- End .container -->
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+       
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+    <script>
+        const isoString = '<%= getCoupon.expirationDate%>'
+        function formatDate(isoString) {
+    const date = new Date(isoString);
+
+    // Get the year, month, and day from the date object
+    const year = date.getUTCFullYear();
+    let month = date.getUTCMonth() + 1; // getUTCMonth() returns 0-11, so add 1 to get 1-12
+    let day = date.getUTCDate();
+
+    // Pad month and day with leading zeros if necessary
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+
+    // Format the date as yyyy-MM-dd
+    return `${year}-${month}-${day}`;
+}
+
+
+const formattedDate = formatDate(isoString);
+document.getElementById('expirationDate').value = formattedDate
+
+    </script>
+<script>
+ const categoryFormSubmit = document.getElementById('categoryFormSubmit');
+ categoryFormSubmit.addEventListener('submit',(e)=>{
+    const categoryName = document.getElementById('categoryName');
+    const errorMsgName = document.getElementById('errorMsgName');
+    if(categoryName.value.length<=0){
+        e.preventDefault();
+        errorMsgName.innerText= "Please enter category name";
+    }else{
+        errorMsgName.innerText= "";
+    }
+ })
+
+ function categoryNameCheck (elem){
+    if(elem.value.length<=0){
+        document.getElementById('errorMsgName').innerText= "Please enter category name";
+    }else{
+        document.getElementById('errorMsgName').innerText= "";
+    }
+ }
+</script>
+
+<%- include('partials/bottom')%>
+<script>
+    toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": false,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+   $(document).ready(()=>{
+    let toast_error = '<%= error%>'
+	
+    if(toast_error !=''){
+        toastr.error(toast_error)
+    }
+   })
+</script>

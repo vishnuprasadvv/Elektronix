@@ -1,0 +1,258 @@
+<%- include('partials/head.ejs') %>
+
+<body>
+    <div class="page-wrapper">
+      <header class="header header-intro-clearance header-4">
+        
+    
+        <div class="header-middle">
+            <div class="container">
+                <div class="header-left">
+                    <button class="mobile-menu-toggler">
+                        <span class="sr-only"></span>
+                        <i class="icon-bars"></i>
+                    </button>
+                    
+                    <a href="/" class="logo">
+                        <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
+                    </a>
+                </div><!-- End .header-left -->
+    
+                <div class="header-center">
+                    <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                        <form action="#" method="get">
+                            <div class="header-search-wrapper search-wrapper-wide">
+                                <label for="q" class="sr-only"></label>
+                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                            </div><!-- End .header-search-wrapper -->
+                        </form>
+                    </div><!-- End .header-search -->
+                </div>
+    
+                <div class="header-right">
+                    <div class="dropdown compare-dropdown">
+                        <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                                <p>Profile</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div><!--End .header-right -->
+            </div><!--End .container -->
+        </div> <!--End .header-middle-->
+    
+        
+    </header><!-- End .header -->
+
+        <main class="main bg-light">
+        	
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+                
+	                <div class="container">
+                        <div class="row g-0">
+                            <div class="col-lg-2 col-md-4 border bg-white">
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-dashboard-link"  href="/admin/dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+                                    <li class="nav-item p-3">
+								        <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab" aria-controls="tab-address" aria-selected="false">Sales</a>
+								    </li>
+								    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/products" role="tab" aria-controls="tab-orders" aria-selected="false">Products</a>
+								    </li>
+                                    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/category" role="tab" aria-controls="tab-orders" aria-selected="false">Product category</a>
+								    </li>
+                                    <li class="nav-item p-3 ">
+								        <a class="nav-link " id="tab-orders-link"  href="/admin/brands" role="tab" aria-controls="tab-orders" aria-selected="false">Product Brands</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link  active" id="tab-downloads-link" href="/admin/orders" role="tab" aria-controls="tab-downloads" aria-selected="true">Orders</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab" aria-controls="tab-address" aria-selected="false">Users</a>
+								    </li>
+                                    <li class="nav-item p-3">
+								        <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab" aria-controls="tab-address" aria-selected="false">Coupons</a>
+								    </li>
+								    <li class="nav-item p-3">
+								        <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab" aria-controls="tab-address" aria-selected="false">Offers</a>
+								    </li>
+								   
+								    <li class="nav-item pt-3 text-center">
+                                        <form action="/admin/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+                            </div>
+
+                      <!-- CONTENT -->
+                      <div class="col-lg-10">
+                        <div class="w-100 h-100 bg-white">
+                            
+                            <div class="layout-container col-lg-12">
+                                <table class="table table-resposive">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col">No.</th>
+                                            <th class="text-center" scope="col">User name</th>
+                                            <th class="text-center" scope="col">Product name</th>
+                                            <th class="text-center" scope="col">Order ID</th>
+                                            <th class="text-center" scope="col">Order Status</th>
+                                            <th class="text-center" scope="col">Payment status</th>
+                                            <th class="text-center" scope="col">QTY</th>
+                                            <th class="text-center" scope="col">Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+            
+                                    <tbody>
+                                        <%  for(let i=0; i<orderslist.length;i++){ %>
+                                           
+                                        <tr class="text-center align-items-center">
+                                            <td><%=  currentPage* limit -(limit) + i+1 %></td>
+                                            
+                                           
+                                            <td class="col-2"><%= orderslist[i].user_id.name %></td>
+                                            
+                                                 <td class="col-2">
+                                                    <% for(let j=0; j<orderslist[i].items.length; j++){%>
+                                                        <%= orderslist[i].items[j].product_var_id.product.name %>
+                                                 <%  } %>
+                                                </td>
+                                            <td ><%= orderslist[i].order_id %></td>
+                                            
+                                            <td> <span <% if(orderslist[i].status =='cancelled'){%> class="text-danger" <%}else if(orderslist[i].status =='delivered'){%> class="text-success" <%}%>> 
+                                                <%= orderslist[i].status%></span></td>
+                                            <% if(orderslist[i].payment_status =='pending'){%>
+                                            <td><span  class="text-warning">Pending</span></td>
+                                           
+                                            <%}else if(orderslist[i].payment_status =='completed'){%>
+                                            <td><span  class="text-success">Completed</span></td>
+                                            <%}%>
+                                            <td><% for(let j=0; j<orderslist[i].items.length; j++){%>
+                                           <%= orderslist[i].items[j].quantity%>
+                                                <% if(orderslist[i].items.length>j+1){%>+
+                                                <%}%>
+                                            <%  } %></td>
+                                            
+                                            <td class="action-col">
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <a href="/admin/orders/<%= orderslist[i]._id%>/edit " class="btn btn-outline-primary-2"><i class="icon-edit"></i></a>
+                                                  
+                                                  </div>
+                                            </td>
+                                           
+                                        </tr>
+
+                                        <%  } %>
+                                        
+                                        
+                                    </tbody>
+                                </table><!-- End .table table-wishlist -->
+                                
+                            </div><!-- End .container -->
+                            <div class="bottom">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-center">
+                                        
+                                        <li class="page-item <%if(currentPage==1){%>disabled<%}%>">
+                                            <a class="page-link page-link-prev" href="?page=<%= currentPage - 1 %>" aria-label="Previous" tabindex="-1">
+                                                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+                                            </a>
+                                        </li>
+                                        <%for(let j=1; j <= totalPages; j++){%>
+    
+                                            <li class="page-item <% if( j==currentPage){%>active <%}%>" aria-current="page"><a class="page-link" href="?page=<%= j %>"><%= j %></a></li>
+                                        <%}%>
+                                        <li class="page-item-total">of <%= totalPages %></li>
+                                        <li class="page-item <%if(currentPage==totalPages){%>disabled<%}%>">
+                                            <a class="page-link page-link-next" href="?page=<%= currentPage+1 %>" aria-label="Next">
+                                                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                </div>
+                            </div><!-- .End .tab-pane -->
+								</div>
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+	                </div><!-- End .container -->
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+       
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/assets/js/superfish.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+		toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": true,
+	  "progressBar": false,
+	  "positionClass": "toast-top-center",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "300",
+	  "hideDuration": "1000",
+	  "timeOut": "5000",
+	  "extendedTimeOut": "1000",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+	   $(document).ready(()=>{
+		let toast_success = '<%= success%>'
+		
+		let toast_error = '<%= alert%>'
+		if(toast_success !=''){
+			toastr.success(toast_success)
+		}
+		
+		if(toast_error !=''){
+			toastr.error(toast_error)
+		}
+	   })
+	</script>
+</body>
+
+
+</html>

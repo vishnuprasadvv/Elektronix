@@ -1,0 +1,153 @@
+<%- include("partials/head.ejs")%>
+<body>
+    <div class="page-wrapper">
+        <%- include("partials/navbar.ejs")%>
+    
+        <main class="main">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        
+                        <li class="breadcrumb-item active" aria-current="page">Login</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            
+            <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-color: azure;">
+				
+            	<div class="container">
+            		<div class="form-box">
+            			<div class="form-tab">
+	            			<ul class="nav nav-pills nav-fill" role="tablist">
+							    <li class="nav-item">
+							        <a class="nav-link active" id="signin-tab-2" data-toggle="tab" role="tab" aria-controls="signin-2" aria-selected="true">Sign In</a>
+							    </li>
+							    <li class="nav-item">
+							        <a class="nav-link" id="register-tab-2" href="/signup" role="tab" aria-controls="register-2" aria-selected="false">Register</a>
+							    </li>
+							</ul>
+							<div class="tab-content">
+							    <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+							    	<form action="/login" method="post" id="formSubmit">
+							    		<div class="form-group">
+							    			<label for="email">Email address *</label>
+							    			<input type="email" class="form-control" id="email" name="email" oninput="validateEmailInput()">
+											<span  class="text-danger fs-5" id="errorMsgEmail"></span>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-group">
+							    			<label for="password">Password *</label>
+							    			<div class="d-flex align-items-center"><input type="password" class="form-control" id="password" name="password" onkeyup="passwordCheckLogin(this)" >
+											<i class="fa fa-eye-slash" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i></div>
+											<span id="alert-password" class="text-danger fs-5"></span>
+							    		</div><!-- End .form-group -->
+
+							    		<div class="form-footer">
+							    			<button type="submit" class="btn btn-outline-primary-2">
+			                					<span>LOG IN</span>
+			            						<i class="icon-long-arrow-right"></i>
+			                				</button>
+
+											<a href="/forgot-password" class="forgot-link">Forgot Your Password?</a>
+							    		</div><!-- End .form-footer -->
+							    	</form>
+							    	<div class="form-choice">
+								    	<p class="text-center">or sign in with</p>
+								    	<div class="row">
+								    		<div class="col-sm-6">
+								    			<a href="/auth/google" class="btn btn-login btn-g">
+								    				<i class="icon-google"></i>
+								    				Login With Google
+								    			</a>
+								    		</div><!-- End .col-6 -->
+								    		<div class="col-sm-6">
+								    			<a href="#" class="btn btn-login btn-f">
+								    				<i class="icon-facebook-f"></i>
+								    				Login With Facebook
+								    			</a>
+								    		</div><!-- End .col-6 -->
+								    	</div><!-- End .row -->
+							    	</div><!-- End .form-choice -->
+							    </div><!-- .End .tab-pane -->
+
+                                
+							</div><!-- End .tab-content -->
+						</div><!-- End .form-tab -->
+            		</div><!-- End .form-box -->
+            	</div><!-- End .container -->
+            </div><!-- End .login-page section-bg -->
+        </main><!-- End .main -->
+
+    </div><!-- End .page-wrapper -->
+    <%- include("partials/mobileview.ejs")%>
+
+<%- include("partials/footer.ejs")%>
+<script>
+	const icon = document.getElementById('togglePassword');
+let password = document.getElementById('password');
+
+/* Event fired when <i> is clicked */
+icon.addEventListener('click', function() {
+  if(password.type === "password") {
+    password.type = "text";
+    icon.classList.add("fa-eye");
+    icon.classList.remove("fa-eye-slash");
+  }
+  else {
+    password.type = "password";
+    icon.classList.add("fa-eye-slash");
+    icon.classList.remove("fa-eye");
+  }
+});
+</script>
+    <!-- Plugins JS File -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/superfish.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/bootstrap-input-spinner.js"></script>
+    <script src="assets/js/jquery.plugin.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/demos/demo-4.js"></script>
+    <script src="/js/loginValidation.js"></script>
+
+	<script>
+		toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": true,
+	  "progressBar": false,
+	  "positionClass": "toast-top-center",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "300",
+	  "hideDuration": "1000",
+	  "timeOut": "5000",
+	  "extendedTimeOut": "1000",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+	   $(document).ready(()=>{
+		let toast_success = '<%= success%>'
+		
+		let toast_error = '<%= alert%>'
+		if(toast_success !=''){
+			toastr.success(toast_success)
+		}
+		
+		if(toast_error !=''){
+			toastr.error(toast_error)
+		}
+	   })
+	</script>
+</body>

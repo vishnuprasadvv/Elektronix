@@ -1,0 +1,264 @@
+<%- include("partials/head.ejs")%>
+
+<body>
+    <div class="page-wrapper">
+        <%- include("partials/navbar.ejs")%>
+
+        <main class="main">
+        	<div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
+        		<div class="container">
+        			<h1 class="page-title">My Account<span>Profile</span></h1>
+        		</div><!-- End .container -->
+        	</div><!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                        
+                        <li class="breadcrumb-item" aria-current="page">My Account</li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                        <li class="breadcrumb-item active" aria-current="page"><%=order.order_id%></li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+            	<div class="dashboard">
+	                <div class="container">
+	                	<div class="row">
+	                		<aside class="col-md-4 col-lg-3">
+	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-dashboard-link" href="/profile" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link active" id="tab-orders-link"  href="/profile/orders"  aria-controls="tab-orders" aria-selected="true">Orders</a>
+								    </li>
+								  
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-address-link"  href="/profile/addresses" aria-controls="tab-address" aria-selected="false">Addresses</a>
+								    </li>
+								    <li class="nav-item">
+								        <a class="nav-link" id="tab-account-link"  href="/profile/security"  aria-controls="tab-account" aria-selected="false">Security</a>
+								    </li>
+									<li class="nav-item">
+								        <a class="nav-link" id="tab-account-link"  href="/profile/wallet"  aria-controls="tab-account" aria-selected="false">My wallet</a>
+								    </li>
+								    <li class="nav-item pt-3">
+                                        <form action="/logout" method="post">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span>LOG OUT</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                        </form>
+								    </li>
+								</ul>
+	                		</aside><!-- End .col-lg-3 -->
+
+	                		<div class="col-md-8 col-lg-9">
+								
+	                			<div class="tab-content ">
+								    
+									<div><h3 class=" text-center">Order details</h3></div>
+									<div class="text-end pb-2">
+										<% if(order.status=='delivered'){%>
+											<form  id="invoiceDownloadForm" data-id="<%=order._id%>"> 
+												<button type="submit" class="btn btn-warning">Download invoice</button>
+											</form>
+										<%}%>
+									</div>
+										<div class="row">			
+											<div class="card card-dashboard" >
+												<% for(let item of order.items){%>
+												
+												<div class="row d-flex flex-row align-items-center p-3" >
+													<div class="col col-3">
+														<div class="row align-items-center">
+															<div class="col col-6">
+																<a href="/view?id=<%=item.product_var_id.product._id%>">
+															<img src="http://localhost:5000/productImages/<%= item.product_var_id.product.image[0] %>" alt="Product image">
+																</a>
+															</div>
+															<div class="col-6">
+																<div class="row">
+																<a href="/view?id=<%=item.product_var_id.product._id%>"><span><%=item.product_var_id.product.name%></span></a>
+																</div>
+																<div class="row"><small>Color : <%=item.product_var_id.color%> </small></div>
+																<div class="row"><small>Qty :<%=item.quantity%> </small></div>
+																
+															</div>
+														</div>
+													</div>
+													
+													<div class="col"><b><span>₹ &nbsp;</span><%=item.product_var_id.product.price %></b></td></div>
+													<%}%>
+													<div class="col col-3">
+														<label >Status :</label>
+														<span <% if(order.status == 'cancelled'){%>class="text-danger"<%}else if(order.status =='delivered'){%>class="text-success"<%}%>><%= order.status%></span>
+														<div><small>ordered on : 
+															<%
+															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const date =months[order.date_of_order.getMonth()]+" "+order.date_of_order.getDate()+", "+order.date_of_order.getFullYear() %>
+															<%= date %>
+														</small></div>
+														<% if(order.date_of_cancel){%>
+														<div><small class="text-danger">cancelled on : 
+															<%
+															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const date =months[order.date_of_cancel.getMonth()]+" "+order.date_of_cancel.getDate()+", "+order.date_of_cancel.getFullYear() %>
+															<%= date %>
+														</small></div>
+														<%}%>
+														<% if(order.date_of_shipped){%>
+														<div><small>Shipped on : 
+															<%
+															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const date =months[order.date_of_shipped.getMonth()]+" "+order.date_of_shipped.getDate()+", "+order.date_of_shipped.getFullYear() %>
+															<%= date %>
+														</small></div>
+														<%}%>
+														<% if(order.date_of_delivered){%>
+														<div><small class="text-success">Delivered on : 
+															<%
+															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const date =months[order.date_of_delivered.getMonth()]+" "+order.date_of_delivered.getDate()+", "+order.date_of_delivered.getFullYear() %>
+															<%= date %>
+														</small></div>
+														<%}%>
+														<% if(order.date_of_return){%>
+														<div><small class="text-warning">returned on : 
+															<%
+															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+															const date =months[order.date_of_delivered.getMonth()]+" "+order.date_of_delivered.getDate()+", "+order.date_of_delivered.getFullYear() %>
+															<%= date %>
+														</small></div>
+														<%}%>
+													</div>
+													
+													<% if(order.status != 'cancelled' && order.status != 'delivered' && order.status != 'returned'){%>
+													<div class="col col-2">
+														<a class="btn btn-danger" href="/profile/orders/<%= order._id%>/reason-cancel">Cancel</a>
+													</div>
+													<%}%>
+													<% if(order.status == 'delivered'){%>
+													<div class="col col-2">
+														<form action="/profile/orders/<%= order._id%>/return?_method=PATCH" method="post">
+															<button type="submit" class="btn btn-warning">Return</button>
+														</form>
+													</div>
+													<%}%>
+												</div>
+												
+											</div>
+											
+											<div class="card card-dashboard" >
+												<div class="row d-flex flex-row align-items-top p-3" >
+													
+													
+													<div class="col "><h6>Delivery address</h6>
+														<div><span>
+															<%= order.shipping_address.name%><br><br>
+															<%= order.shipping_address.mobile%>, 
+															<%= order.shipping_address.pincode%>, 
+															<%= order.shipping_address.address%>, 
+															<%= order.shipping_address.district%>, 
+															<%= order.shipping_address.state%>
+
+																
+														</span></div>
+													</div>
+													<div class="col "><h6>Payment method</h6>
+														<div><span><% if(order.payment_type =='cod'){%>
+															Cash on delivery
+															<%}else{%>
+																<%= order.payment_type%>
+																<%}%>
+															
+														</span></div>
+														<div><span class="fw-bold">Status : (<%=order.payment_status%>)</span></div>
+														<div class="col col-2 p-3">
+															<% if(order.payment_status =='pending' &&  order.status!=='cancelled'){ %>
+															<form action="/profile/orders/<%= order._id%>/create-payment" method="post">
+																<button type="submit" class="btn btn-warning">Pay now</button>
+															</form>
+															<% } %>
+														</div>
+													</div>
+													
+													<div class="col col-3">
+													<h6>Order summary</h6>
+														
+														<div><span>Sub-total : 
+															₹ &nbsp;<%= order.sub_total%>
+														</span></div>
+														<div><span>Shipping : 
+															₹ &nbsp;<%= order.shipping_charge%>
+														</span></div>
+														<%if(order.discount_amount>0){%>
+															<div><span>Discount : 
+																₹ &nbsp;<%= order.discount_amount%>
+															</span></div>
+														<%}%>
+														<div><span><b>Total : 
+															₹ &nbsp;<%= order.total_amount%></b>
+														</span></div>
+														
+														
+														
+													</div>
+													
+												</div>
+											</div><!-- End .card-dashboard -->
+											
+								    	</div><!-- End .row -->
+								</div>
+	                		</div><!-- End .col-lg-9 -->
+	                	</div><!-- End .row -->
+	                </div><!-- End .container -->
+                </div><!-- End .dashboard -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+        <%- include("partials/footer.ejs")%>
+
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <%- include("partials/mobileview.ejs")%>
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/ssets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/assets/js/superfish.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+	<script>
+		const form = document.getElementById('invoiceDownloadForm');
+		form.addEventListener('submit',async(e)=>{
+			e.preventDefault();
+			const orderId = form.getAttribute('data-id')
+			const response = await fetch('/download-invoice/'+orderId, { 
+        	method: 'POST',
+        	headers: {
+          		'Content-Type': 'application/json'
+        	},
+        	
+      });
+	  const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `invoice.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+		})
+	</script>
+</body>
+
+
+</html>
