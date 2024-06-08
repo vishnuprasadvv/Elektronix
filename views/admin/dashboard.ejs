@@ -1,20 +1,23 @@
 <%- include('partials/head.ejs') %>
-<style>
+  <style>
     * {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
     }
+
     .chartMenu {
       width: 100vw;
       height: 40px;
       background: #1A1A1A;
       color: rgba(54, 162, 235, 1);
     }
+
     .chartMenu p {
       padding: 10px;
       font-size: 20px;
     }
+
     .chartCard {
       width: 100vw;
       height: calc(100vh - 40px);
@@ -23,6 +26,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .chartBox {
       width: 700px;
       padding: 20px;
@@ -31,202 +35,205 @@
       background: white;
     }
   </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<body>
+  <body>
     <div class="page-wrapper">
       <header class="header header-intro-clearance header-4">
-        
-    
+
+
         <div class="header-middle">
-            <div class="container">
-                <div class="header-left">
-                    <button class="mobile-menu-toggler">
-                        <span class="sr-only"></span>
-                        <i class="icon-bars"></i>
-                    </button>
-                    
-                    <a href="/" class="logo">
-                        <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
-                    </a>
-                </div><!-- End .header-left -->
-    
-                <div class="header-center">
-                    <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
-                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                        <form action="#" method="get">
-                            <div class="header-search-wrapper search-wrapper-wide">
-                                <label for="q" class="sr-only"></label>
-                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
-                            </div><!-- End .header-search-wrapper -->
-                        </form>
-                    </div><!-- End .header-search -->
-                </div>
-    
-                <div class="header-right">
-                    <div class="dropdown compare-dropdown">
-                        <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
-                            <div class="icon">
-                                <i class="icon-user"></i>
-                                <p>Profile</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                </div><!--End .header-right -->
-            </div><!--End .container -->
+          <div class="container">
+            <div class="header-left">
+              <button class="mobile-menu-toggler">
+                <span class="sr-only"></span>
+                <i class="icon-bars"></i>
+              </button>
+
+              <a href="/" class="logo">
+                <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
+              </a>
+            </div><!-- End .header-left -->
+
+            <div class="header-center">
+              <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                <form action="#" method="get">
+                  <div class="header-search-wrapper search-wrapper-wide">
+                    <label for="q" class="sr-only"></label>
+                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                    <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                  </div><!-- End .header-search-wrapper -->
+                </form>
+              </div><!-- End .header-search -->
+            </div>
+
+            <div class="header-right">
+              <div class="dropdown compare-dropdown">
+                <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true"
+                  aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
+                  <div class="icon">
+                    <i class="icon-user"></i>
+                    <p>Profile</p>
+                  </div>
+                </a>
+              </div>
+
+            </div><!--End .header-right -->
+          </div><!--End .container -->
         </div> <!--End .header-middle-->
-    
-        
-    </header><!-- End .header -->
 
-        <main class="main bg-light">
-        	
-            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
-                <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                        
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
 
-            <div class="page-content">
-            	<div class="dashboard">
-                
-	                <div class="container">
-	                	<div class="row g-0">
-                            <div class="col-lg-2 col-md-4 border bg-white">
-	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
-								    <li class="nav-item p-3">
-								        <a class="nav-link active " id="tab-dashboard-link" data-toggle="tab" href="/admin/dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
-								    </li>
-                                    <li class="nav-item p-3">
-								        <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab" aria-controls="tab-address" aria-selected="false">Sales</a>
-								    </li>
-								    <li class="nav-item p-3 ">
-								        <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab" aria-controls="tab-orders" aria-selected="false">Products</a>
-								    </li>
+      </header><!-- End .header -->
+
+      <main class="main bg-light">
+
+        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
+          <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+          </div><!-- End .container -->
+        </nav><!-- End .breadcrumb-nav -->
+
+        <div class="page-content">
+          <div class="dashboard">
+
+            <div class="container">
+              <div class="row g-0">
+                <div class="col-lg-2 col-md-4 border bg-white">
+                  <ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+                    <li class="nav-item p-3">
+                      <a class="nav-link active " id="tab-dashboard-link" data-toggle="tab" href="/admin/dashboard"
+                        role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
+                    </li>
+                    <li class="nav-item p-3">
+                      <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab"
+                        aria-controls="tab-address" aria-selected="false">Sales</a>
+                    </li>
+                    <li class="nav-item p-3 ">
+                      <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab"
+                        aria-controls="tab-orders" aria-selected="false">Products</a>
+                    </li>
 
                     <li class="nav-item p-3 ">
-                      <a class="nav-link " id="tab-orders-link"  href="/admin/category" role="tab" aria-controls="tab-orders" aria-selected="false">Product category</a>
-                  </li>
-                  <li class="nav-item p-3 ">
-                    <a class="nav-link " id="tab-orders-link"  href="/admin/brands" role="tab" aria-controls="tab-orders" aria-selected="false">Product Brands</a>
-                </li>
-                  <li class="nav-item p-3">
-                    <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab" aria-controls="tab-downloads" aria-selected="false">Orders</a>
-                </li>
-                <li class="nav-item p-3">
-                    <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab" aria-controls="tab-address" aria-selected="false">Users</a>
-                </li>
-                <li class="nav-item p-3">
-                    <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab" aria-controls="tab-address" aria-selected="false">Coupons</a>
-                </li>
-                <li class="nav-item p-3">
-                    <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab" aria-controls="tab-address" aria-selected="false">Offers</a>
-                </li>
-                
-                <li class="nav-item pt-3 text-center">
-                    <form action="/admin/logout" method="post">
+                      <a class="nav-link " id="tab-orders-link" href="/admin/category" role="tab"
+                        aria-controls="tab-orders" aria-selected="false">Product category</a>
+                    </li>
+                    <li class="nav-item p-3 ">
+                      <a class="nav-link " id="tab-orders-link" href="/admin/brands" role="tab"
+                        aria-controls="tab-orders" aria-selected="false">Product Brands</a>
+                    </li>
+                    <li class="nav-item p-3">
+                      <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab"
+                        aria-controls="tab-downloads" aria-selected="false">Orders</a>
+                    </li>
+                    <li class="nav-item p-3">
+                      <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab"
+                        aria-controls="tab-address" aria-selected="false">Users</a>
+                    </li>
+                    <li class="nav-item p-3">
+                      <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab"
+                        aria-controls="tab-address" aria-selected="false">Coupons</a>
+                    </li>
+                    <li class="nav-item p-3">
+                      <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab"
+                        aria-controls="tab-address" aria-selected="false">Offers</a>
+                    </li>
+
+                    <li class="nav-item pt-3 text-center">
+                      <form action="/admin/logout" method="post">
                         <button type="submit" class="btn btn-outline-primary-2">
-                            <span>LOG OUT</span>
-                            <i class="icon-long-arrow-right"></i>
+                          <span>LOG OUT</span>
+                          <i class="icon-long-arrow-right"></i>
                         </button>
-                    </form>
-                </li>
-            </ul>
-        </div>
+                      </form>
+                    </li>
+                  </ul>
+                </div>
 
-                            <div class="col-lg-10">
-	                			<div class="w-100 h-100 bg-white">
+                <div class="col-lg-10">
+                  <div class="w-100 h-100 bg-white">
 
-                                     <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                      <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <div class="row">
-               
-                <div class="col-lg-6 col-md-4 order-1">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img
-                                src="/admin/assets/img/icons/unicons/chart-success.png"
-                                alt="chart success"
-                                class="rounded"
-                              />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt3"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      <div class="container-xxl flex-grow-1 container-p-y">
+                        <div class="row">
+
+                          <div class="col-lg-6 col-md-4 order-1">
+                            <div class="row">
+                              <div class="col-lg-6 col-md-12 col-6 mb-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <div class="card-title d-flex align-items-start justify-content-between">
+                                      <div class="avatar flex-shrink-0">
+                                        <img src="/admin/assets/img/icons/unicons/chart-success.png" alt="chart success"
+                                          class="rounded" />
+                                      </div>
+                                      <div class="dropdown">
+                                        <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                                          aria-haspopup="true" aria-expanded="false">
+                                          <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                          <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                          <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <span class="fw-semibold d-block mb-1">Total products variations</span>
+                                    <h3 class="card-title mb-2">QTY : <%=totalproductsvariation[0].total%>
+                                    </h3>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-lg-6 col-md-12 col-6 mb-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <div class="card-title d-flex align-items-start justify-content-between">
+                                      <div class="avatar flex-shrink-0">
+                                        <img src="/admin/assets/img/icons/unicons/wallet-info.png" alt="Credit Card"
+                                          class="rounded" />
+                                      </div>
+
+                                    </div>
+                                    <span>Sales</span>
+                                    <h3 class="card-title text-nowrap mb-1">₹ <%=totalSalesAmount%>
+                                    </h3>
+                                    <!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> -->
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                          <span class="fw-semibold d-block mb-1">Total products variations</span>
-                          <h3 class="card-title mb-2">QTY : <%=totalproductsvariation[0].total%></h3>
-                          
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img
-                                src="/admin/assets/img/icons/unicons/wallet-info.png"
-                                alt="Credit Card"
-                                class="rounded"
-                              />
-                            </div>
-                           
-                          </div>
-                          <span>Sales</span>
-                          <h3 class="card-title text-nowrap mb-1">₹ <%=totalSalesAmount%></h3>
-                          <!-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-              
-                <div class="col-12 col-md-8 col-lg-6 order-3 order-md-2">
-                  <div class="row">
-                    <div class="col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img src="/admin/assets/img/icons/unicons/users.png" style="width: 76px;" alt="Credit Card" class="rounded" />
-                            </div>
-                            
-                          </div>
-                          <span class="d-block mb-1">Total active users </span>
-                          <h3 class="card-title text-nowrap mb-2"><%=totalActiveUsers%></h3>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- <div class="col-6 mb-4">
+
+                          <div class="col-12 col-md-8 col-lg-6 order-3 order-md-2">
+                            <div class="row">
+                              <div class="col-6 mb-4">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <div class="card-title d-flex align-items-start justify-content-between">
+                                      <div class="avatar flex-shrink-0">
+                                        <img src="/admin/assets/img/icons/unicons/users.png" style="width: 76px;"
+                                          alt="Credit Card" class="rounded" />
+                                      </div>
+
+                                    </div>
+                                    <span class="d-block mb-1">Total active users </span>
+                                    <h3 class="card-title text-nowrap mb-2">
+                                      <%=totalActiveUsers%>
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="col-6 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
@@ -240,32 +247,32 @@
                         </div>
                       </div>
                     </div> -->
-                    <!-- </div>
+                              <!-- </div>
     <div class="row"> -->
-                    
-                  </div>
-                </div>
-              </div>
 
-              <div class="fluid-container p-3">
-                <div class="border rounded p-3">
-                 
-                  <select id="filter" class="form-select p-3 fs-5 fw-bold border-primary">
-                      <option value="year">Yearly</option>
-                      <option value="month">Monthly</option>
-                      <option value="week">Weekly</option>
-                      <option value="day">Daily</option>
-                    </select>
-                
-                    <canvas id="salesChart"></canvas>
-                    <input type="hidden" id="sales" value="<%=sales%>">
-              </div>
-             
-            </div>
-            <!-- / Content -->
-            <div class="row">
-              <!-- Order Statistics -->
-              <!-- <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="fluid-container p-3">
+                          <div class="border rounded p-3">
+
+                            <select id="filter" class="form-select p-3 fs-5 fw-bold border-primary">
+                              <option value="year">Yearly</option>
+                              <option value="month">Monthly</option>
+                              <option value="week">Weekly</option>
+                              <option value="day">Daily</option>
+                            </select>
+
+                            <canvas id="salesChart"></canvas>
+                            <input type="hidden" id="sales" value="<%=sales%>">
+                          </div>
+
+                        </div>
+                        <!-- / Content -->
+                        <div class="row">
+                          <!-- Order Statistics -->
+                          <!-- <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
                 <div class="card h-100">
                   <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-0">
@@ -297,125 +304,125 @@
                   </div>
                 </div>
               </div> -->
-              </div>
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-								   
-								    </div>
-								</div>
-	                		</div><!-- End .col-lg-9 -->
-	                	</div><!-- End .row -->
-	                </div><!-- End .container -->
-                </div><!-- End .dashboard -->
-            </div><!-- End .page-content -->
-        </main><!-- End .main -->
+                        </div>
+                        <div class="content-backdrop fade"></div>
+                      </div>
+                      <!-- Content wrapper -->
 
-       
+                    </div>
+                  </div>
+                </div><!-- End .col-lg-9 -->
+              </div><!-- End .row -->
+            </div><!-- End .container -->
+          </div><!-- End .dashboard -->
+        </div><!-- End .page-content -->
+      </main><!-- End .main -->
+
+
 
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
 
     <%- include('partials/bottom')%>
-    
-         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
-    <script>
-          const salesData = document.getElementById('sales').value
-    const salesDataParsed = JSON.parse(salesData);
-    let salesDate = salesDataParsed.map(item=> item._id);
-    let salesAmount = salesDataParsed.map(item=> item.total);
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
-    document.getElementById('filter').addEventListener('change', async function() {
-      
-      let filterName = document.getElementById('filter').value
-      console.log(filterName)
-      
-      fetch(`/admin/sales-chart?sales_filter=${this.value}`)
-        .then(response => response.json())
-        .then(async responseData=>{
-          if(responseData){
+      <script>
+        const salesData = document.getElementById('sales').value
+        const salesDataParsed = JSON.parse(salesData);
+        let salesDate = salesDataParsed.map(item => item._id);
+        let salesAmount = salesDataParsed.map(item => item.total);
+
+        document.getElementById('filter').addEventListener('change', async function () {
+
+          let filterName = document.getElementById('filter').value
+          console.log(filterName)
+
+          fetch(`/admin/sales-chart?sales_filter=${this.value}`)
+            .then(response => response.json())
+            .then(async responseData => {
+              if (responseData) {
 
 
-            const datas = JSON.parse(responseData)
-         const salesDateFiltered = await datas.map(item=>item._id);
-         const salesAmountFiltered = await datas.map(item=>item.total);
-           console.log(salesDateFiltered,salesAmountFiltered)
-           
-           myChart.config.data.labels = salesDateFiltered;
-           myChart.config.data.datasets[0].data = salesAmountFiltered
-           myChart.config.data.datasets[0].label = filterName !== 'day' ? filterName +'ly' : 'Daily'
-          // myChart.config.options.scales.x.time.unit=filterName;
-           myChart.update()
-          
-          }
+                const datas = JSON.parse(responseData)
+                const salesDateFiltered = await datas.map(item => item._id);
+                const salesAmountFiltered = await datas.map(item => item.total);
+                console.log(salesDateFiltered, salesAmountFiltered)
+
+                myChart.config.data.labels = salesDateFiltered;
+                myChart.config.data.datasets[0].data = salesAmountFiltered
+                myChart.config.data.datasets[0].label = filterName !== 'day' ? filterName + 'ly' : 'Daily'
+                // myChart.config.options.scales.x.time.unit=filterName;
+                myChart.update()
+
+              }
+            })
+
         })
 
-    })
+        // setup 
+        const data = {
+          labels: salesDate,
+          datasets: [{
+            label: 'Weekly Sales',
+            data: salesAmount,
+            backgroundColor: [
+              'rgba(255, 26, 104, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(0, 0, 0, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255, 26, 104, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(0, 0, 0, 1)'
+            ],
+            borderWidth: 1
+          }]
+        };
 
- // setup 
- const data = {
-       labels:salesDate ,
-      datasets: [{
-        label: 'Weekly Sales',
-        data: salesAmount,
-        backgroundColor: [
-          'rgba(255, 26, 104, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(0, 0, 0, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 26, 104, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(0, 0, 0, 1)'
-        ],
-        borderWidth: 1
-      }]
-    };
+        // config 
+        const config = {
+          type: 'bar',
+          data,
+          options: {
+            scales: {
+              // x:{
+              //     type:'time',
+              //     time:{
+              //         unit:'day',
+              //     },
+              //     min:salesDate[0],
+              //     max: salesDate[salesDate.length]
 
-    // config 
-    const config = {
-      type: 'bar',
-      data,
-      options: {
-        scales: {
-            // x:{
-            //     type:'time',
-            //     time:{
-            //         unit:'day',
-            //     },
-            //     min:salesDate[0],
-            //     max: salesDate[salesDate.length]
-               
-            // },
+              // },
 
-          y: {
-            beginAtZero: true
+              y: {
+                beginAtZero: true
+              }
+            }
           }
-        }
-      }
-    };
+        };
 
-   
-    // render init block
-    const myChart = new Chart(
-         document.getElementById('salesChart'),
-         config
-       );
 
- 
-   
-  
-    
-    </script>
-     
+        // render init block
+        const myChart = new Chart(
+          document.getElementById('salesChart'),
+          config
+        );
+
+
+
+
+
+      </script>

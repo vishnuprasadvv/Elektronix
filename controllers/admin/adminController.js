@@ -49,7 +49,7 @@ const handleGetAdminDashboard = async (req, res) => {
     console.log(sales1)
 
 
-    const sales = JSON.stringify(sales1)
+    const sales = JSON.stringify(sales1) 
     //console.log(sales1)    
     //total sales 
     const totalSalesAmount = sales1.reduce((acc, val) => val.total + acc, 0)
