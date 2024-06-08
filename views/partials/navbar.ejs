@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <header class="header header-intro-clearance header-4">
     <div class="header-top">
         <div class="container">
@@ -160,9 +161,9 @@
             </div><!-- End .header-left -->
 
             <div class="header-center">
-                <nav class="main-nav">
+                <nav class="main-nav" id="main_nav">
                     <ul class="menu sf-arrows">
-                        <li class="megamenu-container active">
+                        <li class="">
                             
                             <a href=<% if(userLogged == undefined) {%>"/"<%}else{%>
                                 "/home"<%}%> >
@@ -170,7 +171,7 @@
                             
                         </li>
                     
-                        <li>
+                        <li >
                             <a href="/list" class="sf">Product</a>
                         </li>
                         
@@ -191,3 +192,20 @@
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->
 </header><!-- End .header -->
+<script>
+ document.getElementById('main_nav')
+ jQuery(function($) {
+  var path = window.location.href; 
+  // because the 'href' property of the DOM element is the absolute path
+  console.log(path)
+  $('#main_nav ul li a').each(function() {
+    console.log(this.href)
+    console.log(this)
+    if (this.href === path) {
+      $(this.parentElement).addClass('megamenu-container active');
+      
+    }
+  });
+  
+});
+</script>

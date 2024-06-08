@@ -104,8 +104,9 @@ const categories = await CategoryCollection.find({
     const fullBrandsColl = await BrandsCollection.find({});
     //total cateories 
      const fullCategories  = await CategoryCollection.find({});
+     const productListTab = true;
 
-    res.render('list',{title:"Product-list",products,fullCategories,userLogged,fullBrandsColl,
+    res.render('list',{title:"Product-list",products,fullCategories,userLogged,fullBrandsColl,productListTab,
         totalPages : Math.ceil(totalItemsCount/limit),
         currentPage : page,
         totalItemsCount,
