@@ -1,3 +1,4 @@
+const { populate } = require('../../models/cart')
 const OrderCollection = require('../../models/orders')
 
 
@@ -10,7 +11,7 @@ const handleGetSales = async (req,res)=>{
             
             res.render('admin/sales',{title:'Sales'})
             //res.json(orders)
-        console.log(orders)
+        
     } catch (error) {
         console.log(error)
     }
@@ -49,26 +50,26 @@ const handleGetFilterSales = async (req,res)=>{
                 break;
             case 'yearly':
                 matchCondition.date_of_order = {
-                    $gte: new Date(currentDate.setFullYear(currentDate.getFullYear() - 1)),
+                    $gte: new Date(currentDate.setFullYear(currentDate.getFullYear() - 1)), 
                     $lte: new Date()
                 };
                 break;
         }
     }
     try {
-
+        const orderList = await OrderCollection.find(matchCondition).populate([{path:'user_id'},{path:'items.product_var_id','populate':{path:'product'}}])
         const orders= await OrderCollection.aggregate([{ $match: matchCondition },
             {
                 $group: {
-                    _id: null,
-                    totalSales: { $sum: '$total_amount' },
-                    totalDiscount: { $sum: '$discount_amount' },
-                    orderCount: { $count: {} }
-                }
+                       _id: null,
+                       totalSales: { $sum: '$total_amount' },
+                       totalDiscount: { $sum: '$discount_amount' },
+                       orderCount: { $count: {} }
+                   }
             }])
-            
-            
-            res.json(orders)
+           const ordersSalesList = {orderList,orders} 
+            console.log(ordersSalesList)
+            res.json(ordersSalesList)
         console.log(orders)
     } catch (error) {
         console.log(error)

@@ -1,189 +1,233 @@
+<style>
+    tr td {
+        padding: 10 !important;
+        margin: 10 !important;
+        font-size: small
+    }
+</style>
 <%- include('partials/head')%>
 
-<body>
-    <div class="page-wrapper">
-      <header class="header header-intro-clearance header-4">
-        
-    
-        <div class="header-middle">
-            <div class="container">
-                <div class="header-left">
-                    <button class="mobile-menu-toggler">
-                        <span class="sr-only"></span>
-                        <i class="icon-bars"></i>
-                    </button>
-                    
-                    <a href="/" class="logo">
-                        <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
-                    </a>
-                </div><!-- End .header-left -->
-    
-                <div class="header-center">
-                    <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
-                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                        <form action="#" method="get">
-                            <div class="header-search-wrapper search-wrapper-wide">
-                                <label for="q" class="sr-only"></label>
-                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
-                            </div><!-- End .header-search-wrapper -->
-                        </form>
-                    </div><!-- End .header-search -->
-                </div>
-    
-                <div class="header-right">
-                    <div class="dropdown compare-dropdown">
-                        <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
-                            <div class="icon">
-                                <i class="icon-user"></i>
-                                <p>Profile</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                </div><!--End .header-right -->
-            </div><!--End .container -->
-        </div> <!--End .header-middle-->
-    
-        
-    </header><!-- End .header -->
+    <body>
+        <div class="page-wrapper">
+            <header class="header header-intro-clearance header-4">
 
-        <main class="main bg-light">
-        	
-            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
-                <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                        
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </div><!-- End .container -->
-            </nav><!-- End .breadcrumb-nav -->
 
-            <div class="page-content">
-            	<div class="dashboard">
-                
-	                <div class="container">
-	                	<div class="row g-0">
-                            <div class="col-lg-2 col-md-4 border bg-white">
-	                			<ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
-								    <li class="nav-item p-3">
-								        <a class="nav-link " id="tab-dashboard-link" data-toggle="tab" href="/admin/dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="false">Dashboard</a>
-								    </li>
-                                    <li class="nav-item p-3">
-								        <a class="nav-link active" id="tab-address-link" href="/admin/sales" role="tab" aria-controls="tab-address" aria-selected="true">Sales</a>
-								    </li>
-								    <li class="nav-item p-3 ">
-								        <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab" aria-controls="tab-orders" aria-selected="false">Products</a>
-								    </li>
+                <div class="header-middle">
+                    <div class="container">
+                        <div class="header-left">
+                            <button class="mobile-menu-toggler">
+                                <span class="sr-only"></span>
+                                <i class="icon-bars"></i>
+                            </button>
 
-                    <li class="nav-item p-3 ">
-                      <a class="nav-link " id="tab-orders-link"  href="/admin/category" role="tab" aria-controls="tab-orders" aria-selected="false">Product category</a>
-                  </li>
-                  <li class="nav-item p-3 ">
-                    <a class="nav-link " id="tab-orders-link"  href="/admin/brands" role="tab" aria-controls="tab-orders" aria-selected="false">Product Brands</a>
-                </li>
-                  <li class="nav-item p-3">
-                    <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab" aria-controls="tab-downloads" aria-selected="false">Orders</a>
-                </li>
-                <li class="nav-item p-3">
-                    <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab" aria-controls="tab-address" aria-selected="false">Users</a>
-                </li>
-                <li class="nav-item p-3">
-                    <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab" aria-controls="tab-address" aria-selected="false">Coupons</a>
-                </li>
-                <li class="nav-item p-3">
-                    <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab" aria-controls="tab-address" aria-selected="false">Offers</a>
-                </li>
-                
-                <li class="nav-item pt-3 text-center">
-                    <form action="/admin/logout" method="post">
-                        <button type="submit" class="btn btn-outline-primary-2">
-                            <span>LOG OUT</span>
-                            <i class="icon-long-arrow-right"></i>
-                        </button>
-                    </form>
-                </li>
-            </ul>
-        </div>
+                            <a href="/" class="logo">
+                                <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
+                            </a>
+                        </div><!-- End .header-left -->
 
-                            <div class="col-lg-10">
-	                			<div class="w-100 h-100 bg-white">
-                                    <div class="layout-container col-lg-12 p-3">
-								   <div class="filter-form p-5  mb-3 border">
-                                    <div class="text-center mb-2">
-                                        <h3 >Filter Sales Report</h3>
+                        <div class="header-center">
+                            <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                                <form action="#" method="get">
+                                    <div class="header-search-wrapper search-wrapper-wide">
+                                        <label for="q" class="sr-only"></label>
+                                        <button class="btn btn-primary" type="submit"><i
+                                                class="icon-search"></i></button>
+                                        <input type="search" class="form-control" name="q" id="q"
+                                            placeholder="Search product ..." required>
+                                    </div><!-- End .header-search-wrapper -->
+                                </form>
+                            </div><!-- End .header-search -->
+                        </div>
+
+                        <div class="header-right">
+                            <div class="dropdown compare-dropdown">
+                                <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true"
+                                    aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
+                                    <div class="icon">
+                                        <i class="icon-user"></i>
+                                        <p>Profile</p>
                                     </div>
-                            <form id="filterForm">
-                                <div class="row">
-                                    <div class="col-4">
-                                <label for="period">Period:</label>
-                                <select id="period" name="period" class="form-select fs-4">
-                                    <option value="">Custom Date Range</option>
-                                    <option value="daily">Last 1 Day</option>
-                                    <option value="weekly">Last 1 Week</option>
-                                    <option value="monthly">Last 1 Month</option>
-                                    <option value="yearly">Last 1 Year</option>
-                                </select><br><br>
+                                </a>
                             </div>
-                            <div class="col-4">
-                                <label for="startDate">Start Date:</label>
-                                <input type="date" id="startDate" name="startDate" class="form-select fs-4"><br><br>
-                            </div>
-                            <div class="col-4">
-                                <label for="endDate">End Date:</label>
-                                <input type="date" id="endDate" name="endDate" class="form-select fs-4"><br><br>
+
+                        </div><!--End .header-right -->
+                    </div><!--End .container -->
+                </div> <!--End .header-middle-->
+
+
+            </header><!-- End .header -->
+
+            <main class="main bg-light">
+
+                <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
+                    <div class="container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+
+                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        </ol>
+                    </div><!-- End .container -->
+                </nav><!-- End .breadcrumb-nav -->
+
+                <div class="page-content">
+                    <div class="dashboard">
+
+                        <div class="container">
+                            <div class="row g-0">
+                                <div class="col-lg-2 col-md-4 border bg-white">
+                                    <ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+                                        <li class="nav-item p-3">
+                                            <a class="nav-link " id="tab-dashboard-link" data-toggle="tab"
+                                                href="/admin/dashboard" role="tab" aria-controls="tab-dashboard"
+                                                aria-selected="false">Dashboard</a>
+                                        </li>
+                                        <li class="nav-item p-3">
+                                            <a class="nav-link active" id="tab-address-link" href="/admin/sales"
+                                                role="tab" aria-controls="tab-address" aria-selected="true">Sales</a>
+                                        </li>
+                                        <li class="nav-item p-3 ">
+                                            <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab"
+                                                aria-controls="tab-orders" aria-selected="false">Products</a>
+                                        </li>
+
+                                        <li class="nav-item p-3 ">
+                                            <a class="nav-link " id="tab-orders-link" href="/admin/category" role="tab"
+                                                aria-controls="tab-orders" aria-selected="false">Product category</a>
+                                        </li>
+                                        <li class="nav-item p-3 ">
+                                            <a class="nav-link " id="tab-orders-link" href="/admin/brands" role="tab"
+                                                aria-controls="tab-orders" aria-selected="false">Product Brands</a>
+                                        </li>
+                                        <li class="nav-item p-3">
+                                            <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab"
+                                                aria-controls="tab-downloads" aria-selected="false">Orders</a>
+                                        </li>
+                                        <li class="nav-item p-3">
+                                            <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab"
+                                                aria-controls="tab-address" aria-selected="false">Users</a>
+                                        </li>
+                                        <li class="nav-item p-3">
+                                            <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab"
+                                                aria-controls="tab-address" aria-selected="false">Coupons</a>
+                                        </li>
+                                        <li class="nav-item p-3">
+                                            <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab"
+                                                aria-controls="tab-address" aria-selected="false">Offers</a>
+                                        </li>
+
+                                        <li class="nav-item pt-3 text-center">
+                                            <form action="/admin/logout" method="post">
+                                                <button type="submit" class="btn btn-outline-primary-2">
+                                                    <span>LOG OUT</span>
+                                                    <i class="icon-long-arrow-right"></i>
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Generate Report</button>
-                            </div>
-                            </form>
-                        </div>
-                        <div class="report">
-                            <div class="text-center">
-                                <h3>Sales Report</h3>
-                            </div>
-                            <div id="reportContainer"></div>
-                        </div>
-                     </div>
-								</div>
-                            </div>
-	                		</div><!-- End .col-lg-9 -->
-	                	</div><!-- End .row -->
-	                </div><!-- End .container -->
+
+                                <div class="col-lg-10">
+                                    <div class="w-100 h-100 bg-white">
+                                        <div class="layout-container col-lg-12 p-3">
+                                            <div class="filter-form p-5  mb-3 border">
+                                                <div class="text-center mb-2">
+                                                    <h3>Filter Sales Report</h3>
+                                                </div>
+                                                <form id="filterForm">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label for="period">Period:</label>
+                                                            <select id="period" name="period" class="form-select fs-4">
+                                                                <option value="">Custom Date Range</option>
+                                                                <option value="daily">Last 1 Day</option>
+                                                                <option value="weekly">Last 1 Week</option>
+                                                                <option value="monthly">Last 1 Month</option>
+                                                                <option value="yearly">Last 1 Year</option>
+                                                            </select><br><br>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label for="startDate">Start Date:</label>
+                                                            <input type="date" id="startDate" name="startDate"
+                                                                class="form-select fs-4"><br><br>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label for="endDate">End Date:</label>
+                                                            <input type="date" id="endDate" name="endDate"
+                                                                class="form-select fs-4"><br><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary">Generate
+                                                            Report</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="report">
+
+                                                <div id="reportContainer"></div>
+                                            </div>
+                                            <div id="salesReportDetailsTable">
+                                                <table class="table table-resposive table-bordered ">
+                                                    <thead class="table-info" id="salesReporthead">
+
+                                                    <tbody id="salesDetails" class="text-center">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End .col-lg-9 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .container -->
                 </div><!-- End .dashboard -->
-            </div><!-- End .page-content -->
+        </div><!-- End .page-content -->
         </main><!-- End .main -->
 
-       
 
-    </div><!-- End .page-wrapper -->
-    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
-    <script>
-        document.getElementById('filterForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const period = document.getElementById('period').value;
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
 
-            let query = '?';
-            if (period) {
-                query += `period=${period}`;
-            } else if (startDate && endDate) {
-                query += `startDate=${startDate}&endDate=${endDate}`;
-            }
+        </div><!-- End .page-wrapper -->
+        <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+        <script>
+            document.getElementById('filterForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+                const period = document.getElementById('period').value;
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
 
-            const response = await fetch(`/admin/sales/filter${query}`);
-            const data = await response.json();
-            displayReport(data);
-        });
+                let query = '?';
+                if (period) {
+                    query += `period=${period}`;
+                } else if (startDate && endDate) {
+                    query += `startDate=${startDate}&endDate=${endDate}`;
+                }
 
-        function displayReport(data) {
-            const reportContainer = document.getElementById('reportContainer');
-            reportContainer.innerHTML = `
+                const response = await fetch(`/admin/sales/filter${query}`);
+
+                const data = await response.json();
+                salesReportDetails(data)
+                displayReport(data);
+                console.log(data.orderList)
+            });
+
+            function displayReport(data) {
+                const reportContainer = document.getElementById('reportContainer');
+                reportContainer.innerHTML = `
+
+
+                 <div class="text-center">
+                  <h3>Sales Report</h3>
+                </div>
+             <div class="text-center mt-2 pb-3">
+                <button class="btn btn-danger" id="downloadPdf">Download PDF</button>
+                <button id="downloadExcel" class="btn btn-primary">Download Excel</button>
+                </div>
+
+
                 <table class="table table-resposive table-bordered ">
                     <thead>
                     <tr>
@@ -194,55 +238,219 @@
                     </thead>
                     <tbody>
                     <tr class="text-center align-items-center">
-                        <td class="text-center fw-bold">₹&nbsp;${data[0]?.totalSales || 0}</td>
-                        <td class="text-center fw-bold">₹&nbsp;${data[0]?.totalDiscount || 0}</td>
-                        <td class="text-center fw-bold">${data[0]?.orderCount || 0}</td>
+                        <td class="text-center fw-bold">₹&nbsp;${data.orders[0]?.totalSales || 0}</td>
+                        <td class="text-center fw-bold">₹&nbsp;${data.orders[0]?.totalDiscount || 0}</td>
+                        <td class="text-center fw-bold">${data.orders[0]?.orderCount || 0}</td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="text-center mt-2">
-                <button class="btn btn-danger" id="downloadPdf">Download PDF</button>
-                <button id="downloadExcel" class="btn btn-primary">Download Excel</button>
-                </div>
+                
+               
             `;
 
-            document.getElementById('downloadPdf').addEventListener('click', downloadPdf);
-            document.getElementById('downloadExcel').addEventListener('click', downloadExcel);
-        }
 
-        function downloadPdf() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+                document.getElementById('downloadPdf').addEventListener('click', downloadPdf);
+                document.getElementById('downloadExcel').addEventListener('click', downloadExcel);
+            }
 
-            const totalSales = document.querySelector('.report td:nth-child(1)').textContent;
-            const totalDiscount = document.querySelector('.report td:nth-child(2)').textContent;
-            const orderCount = document.querySelector('.report td:nth-child(3)').textContent;
+            function salesReportDetails(data) {
+                const salesDetails = document.getElementById('salesDetails');
+                salesDetails.innerHTML = ''
+                if (data.orderList.length == 0) {
+                    document.getElementById('salesReportDetailsTable').innerHTML = `<h3 class='text-center'>No orders</h3>`
+                } else {
 
-            doc.text('Sales Report', 10, 10);
-            doc.text(`Total Sales: ${totalSales}`, 10, 20);
-            doc.text(`Total Discount: ${totalDiscount}`, 10, 30);
-            doc.text(`Order Count: ${orderCount}`, 10, 40);
+                    const salesReporthead = document.getElementById('salesReporthead');
+                    salesReporthead.innerHTML = ` <tr>
+                                    <th class="text-center fw-bold col-2 ">Order ID</th>
+                                    <th class="text-center fw-bold">Date</th>
+                                    <th class="text-center fw-bold col-2">User name</th>
+                                    <th class="text-center fw-bold col-2">Product name</th>
+                                    <th class="text-center fw-bold ">Product Qty</th>
+                                    <th class="text-center fw-bold col-1">
+                                        <div>Price</div>
+                                        <div>₹</div>
+                                    </th>
+                                    <th class="text-center fw-bold col-1">Sub total<div>₹</div></th>
+                                    <th class="text-center fw-bold col-1">Discount<div>₹</div></th>
+                                    <th class="text-center fw-bold col-1">Total<div>₹</div></th>
+                                </tr>
+                                </thead>`
 
-            doc.save('sales_report.pdf');
-        }
+                    data.orderList.forEach(item => {
+                        var row = document.createElement('tr');
 
-        function downloadExcel() {
-            const totalSales = document.querySelector('.report td:nth-child(1)').textContent;
-            const totalDiscount = document.querySelector('.report td:nth-child(2)').textContent;
-            const orderCount = document.querySelector('.report td:nth-child(3)').textContent;
+                        let orderIdCell = document.createElement('td');
+                        orderIdCell.textContent = item.order_id;
+                        row.appendChild(orderIdCell)
 
-            const ws_data = [
-                ["Total Sales", "Total Discount", "Order Count"],
-                [totalSales, totalDiscount, orderCount]
-            ];
+                        let dateCell = document.createElement('td');
+                        let date = new Date(item.date_of_order)
+                        dateCell.textContent = date.toLocaleDateString("en-US");
+                        row.appendChild(dateCell)
 
-            const wb = XLSX.utils.book_new();
-            const ws = XLSX.utils.aoa_to_sheet(ws_data);
 
-            XLSX.utils.book_append_sheet(wb, ws, "Sales Report");
+                        var userNameCell = document.createElement('td');
+                        //  userNameCell.rowSpan= item.items.length;
+                        userNameCell.textContent = item.user_id.name
+                        row.appendChild(userNameCell);
 
-            XLSX.writeFile(wb, "sales_report.xlsx");
-        }
-    </script>
 
-    <%- include('partials/bottom')%>
+                        var productNameCell = document.createElement('td');
+                        // productNameCell.textContent = item.items.map(elem=> elem.product_var_id.product.name);
+                        let tr;
+                        let td;
+                        for (let product of item.items) {
+                            tr = document.createElement('tr');
+                            tr.className = 'd-flex flex-col justify-content-center';
+                            tr.textContent = product.product_var_id.product.name;
+                            productNameCell.appendChild(tr)
+                        }
+                        row.appendChild(productNameCell)
+
+
+
+
+                        var productQtyCell = document.createElement('td');
+                        //productQtyCell.textContent = item.items.map(item=> item.quantity)
+                        for (let product of item.items) {
+
+                            tr = document.createElement('tr');
+                            tr.className = 'd-flex flex-col justify-content-center';
+                            tr.textContent = product.quantity
+                            productQtyCell.appendChild(tr)
+
+                        }
+                        row.appendChild(productQtyCell)
+
+                        var priceCell = document.createElement('td');
+                        // priceCell.textContent = product.product_var_id.product.price;
+
+                        for (let product of item.items) {
+                            tr = document.createElement('tr');
+                            tr.className = 'd-flex flex-col justify-content-center';
+                            tr.textContent = product.product_var_id.product.price;
+
+                            priceCell.appendChild(tr)
+                        }
+                        row.appendChild(priceCell);
+
+
+                        var subAmountCell = document.createElement('td');
+                        subAmountCell.textContent = item.sub_total;
+                        // subAmountCell.rowSpan= item.items.length;
+                        row.appendChild(subAmountCell)
+
+                        var discountAmountCell = document.createElement('td');
+                        discountAmountCell.textContent = item.discount_amount;
+                        //discountAmountCell.rowSpan= item.items.length;
+                        row.appendChild(discountAmountCell)
+
+                        var totalCell = document.createElement('td');
+                        totalCell.textContent = item.total_amount;
+                        // totalCell.rowSpan= item.items.length;
+                        row.appendChild(totalCell);
+
+
+                        salesDetails.appendChild(row)
+
+
+
+                    });
+                }
+            }
+
+            function downloadPdf() {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // const totalSales = document.querySelector('.report td:nth-child(1)').textContent;
+                // const totalDiscount = document.querySelector('.report td:nth-child(2)').textContent;
+                // const orderCount = document.querySelector('.report td:nth-child(3)').textContent;
+
+                // doc.text('Sales Report', 10, 10);
+                // doc.text(`Total Sales: ${totalSales}`, 10, 20);
+                // doc.text(`Total Discount: ${totalDiscount}`, 10, 30);
+                // doc.text(`Order Count: ${orderCount}`, 10, 40);
+
+                //sales report 
+                let yPosition = 10;
+
+                // Add title
+                doc.setFontSize(20);
+                doc.text('Sales Report', 105, yPosition, null, null, 'center');
+                yPosition += 10;
+
+                // Add filters
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                const range = document.getElementById('period').value;
+
+                doc.setFontSize(8);
+                doc.text(`Custom Date Range: ${startDate} to ${endDate}`, 10, yPosition);
+                yPosition += 10;
+                doc.text(`Preset Date Range: ${range}`, 10, yPosition);
+                yPosition += 10;
+
+                // Add table headers
+                doc.setFontSize(10);
+                const headers = ["Order ID", "Date", "Customer Name", "Order Amount", "Discount", "Coupon Deduction", "GST Amount", "Final Amount"];
+                headers.forEach((header, index) => {
+                    doc.text(header, 10 + (index * 25), yPosition);
+                });
+                yPosition += 10;
+
+                // Add table data
+                const salesData = document.getElementById('salesDetails').getElementsByTagName('tr');
+                for (let i = 0; i < salesData.length; i++) {
+                    const cells = salesData[i].getElementsByTagName('td');
+                    for (let j = 0; j < cells.length; j++) {
+                        doc.text(cells[j].innerText, 10 + (j * 25), yPosition);
+                    }
+                    yPosition += 10;
+                }
+
+                // Add summary
+                // yPosition += 10;
+                // doc.setFontSize(12);
+                // doc.text(document.getElementById('overall-sales-count').innerText, 10, yPosition);
+                // yPosition += 10;
+                // doc.text(document.getElementById('overall-order-amount').innerText, 10, yPosition);
+                // yPosition += 10;
+                // doc.text(document.getElementById('overall-discount').innerText, 10, yPosition);
+                // yPosition += 10;
+                // doc.text(document.getElementById('overall-coupon-discount').innerText, 10, yPosition);
+                // yPosition += 10;
+                // doc.text(document.getElementById('overall-gst').innerText, 10, yPosition);
+                // yPosition += 10;
+                // doc.text(document.getElementById('overall-revenue').innerText, 10, yPosition);
+
+                // Save the PDF
+
+
+                doc.save('sales_report.pdf');
+            }
+
+            function downloadExcel() {
+                const totalSales = document.querySelector('.report td:nth-child(1)').textContent;
+                const totalDiscount = document.querySelector('.report td:nth-child(2)').textContent;
+                const orderCount = document.querySelector('.report td:nth-child(3)').textContent;
+
+                const ws_data = [
+                    ["Total Sales", "Total Discount", "Order Count"],
+                    [totalSales, totalDiscount, orderCount]
+                ];
+
+                const wb = XLSX.utils.book_new();
+                const ws = XLSX.utils.aoa_to_sheet(ws_data);
+
+                XLSX.utils.book_append_sheet(wb, ws, "Sales Report");
+
+                XLSX.writeFile(wb, "sales_report.xlsx");
+            }
+
+
+
+        </script>
+
+        <%- include('partials/bottom')%>

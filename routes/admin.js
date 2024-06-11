@@ -121,7 +121,7 @@ router.get('/coupon/:id/edit',handleGetEditCoupon)
 router.put('/coupon/:id/edit',handlePutEditCoupon)
 
 //sales 
-router.get('/sales',isAdminAuth,handleGetSales)
+router.get('/sales',handleGetSales)
 router.get('/sales/filter',handleGetFilterSales)
 
 //offers
