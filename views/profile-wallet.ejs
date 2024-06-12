@@ -88,14 +88,26 @@
 														<div class="row align-items-center">
 															
 															<div class="col-6">
-															<span>Refund </span>
+															<span><%if( item.type=='credit'){%> 
+																Credited
+																<%}else if(item.type=='debit'){%>
+																	Debited
+																<%}else if(item.type=='refund'){%>
+																Refunded
+																<%}%>
+															 </span>
 															</div>
 														</div>
 													</div>
 													<div class="col col-4">
 														
 														<div>
-														<small>credited on : 
+														<small>
+															<%if( item.type=='credit' || item.type=='refund'){%> 
+															credited on : 
+															<%}else if(item.type=='debit'){%>
+																debited on : 
+															<%}%>
 															<%
 															const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 															const date =months[item.date.getMonth()]+" "+item.date.getDate()+", "+item.date.getFullYear() %>
@@ -103,7 +115,13 @@
 														</small>
 														</div>
 													</div>
-													<div class="col col-4 align-items-center text-end"><span class="fs-4 fw-bold text-success"> &plus; &nbsp;₹ &nbsp;<%= item.amount %></span></div>
+													<div class="col col-4 align-items-center text-end">
+														<% if(item.type=== 'refund' || item.type === 'credit'){%>
+															<span class="fs-4 fw-bold text-success"> &plus; &nbsp;₹ &nbsp;<%= item.amount %></span>
+														<%}else{%>
+															<span class="fs-4 fw-bold text-danger"> &minus; &nbsp;₹ &nbsp;<%= item.amount %></span>
+														<%}%>
+													</div>
 												</div>
 													
 											</div>

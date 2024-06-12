@@ -244,8 +244,6 @@
                     </tr>
                     </tbody>
                 </table>
-                
-               
             `;
 
 
@@ -255,11 +253,10 @@
 
             function salesReportDetails(data) {
                 const salesDetails = document.getElementById('salesDetails');
-                salesDetails.innerHTML = ''
+                salesDetails.innerHTML = '';
                 if (data.orderList.length == 0) {
                     document.getElementById('salesReportDetailsTable').innerHTML = `<h3 class='text-center'>No orders</h3>`
                 } else {
-
                     const salesReporthead = document.getElementById('salesReporthead');
                     salesReporthead.innerHTML = ` <tr>
                                     <th class="text-center fw-bold col-2 ">Order ID</th>
@@ -289,12 +286,10 @@
                         dateCell.textContent = date.toLocaleDateString("en-US");
                         row.appendChild(dateCell)
 
-
                         var userNameCell = document.createElement('td');
                         //  userNameCell.rowSpan= item.items.length;
                         userNameCell.textContent = item.user_id.name
                         row.appendChild(userNameCell);
-
 
                         var productNameCell = document.createElement('td');
                         // productNameCell.textContent = item.items.map(elem=> elem.product_var_id.product.name);
@@ -307,9 +302,6 @@
                             productNameCell.appendChild(tr)
                         }
                         row.appendChild(productNameCell)
-
-
-
 
                         var productQtyCell = document.createElement('td');
                         //productQtyCell.textContent = item.items.map(item=> item.quantity)
@@ -335,7 +327,6 @@
                         }
                         row.appendChild(priceCell);
 
-
                         var subAmountCell = document.createElement('td');
                         subAmountCell.textContent = item.sub_total;
                         // subAmountCell.rowSpan= item.items.length;
@@ -351,10 +342,7 @@
                         // totalCell.rowSpan= item.items.length;
                         row.appendChild(totalCell);
 
-
                         salesDetails.appendChild(row)
-
-
 
                     });
                 }
@@ -393,10 +381,10 @@
                 yPosition += 10;
 
                 // Add table headers
-                doc.setFontSize(10);
-                const headers = ["Order ID", "Date", "Customer Name", "Order Amount", "Discount", "Coupon Deduction", "GST Amount", "Final Amount"];
+                doc.setFontSize(8);
+                const headers = ["Order ID", "Date", "Customer","Product","Qty", "Price", "Sub Total", "Discount", "Total Amount"];
                 headers.forEach((header, index) => {
-                    doc.text(header, 10 + (index * 25), yPosition);
+                    doc.text(header, 10 + (index * 22), yPosition);
                 });
                 yPosition += 10;
 
@@ -405,9 +393,10 @@
                 for (let i = 0; i < salesData.length; i++) {
                     const cells = salesData[i].getElementsByTagName('td');
                     for (let j = 0; j < cells.length; j++) {
-                        doc.text(cells[j].innerText, 10 + (j * 25), yPosition);
+                        doc.setFontSize(6);
+                        doc.text(cells[j].innerText, 10 + (j * 22), yPosition);
                     }
-                    yPosition += 10;
+                    yPosition += 2;
                 }
 
                 // Add summary
@@ -440,7 +429,18 @@
                     ["Total Sales", "Total Discount", "Order Count"],
                     [totalSales, totalDiscount, orderCount]
                 ];
-
+                //add sales data 
+                const salesData = document.getElementById('salesDetails').getElementsByTagName('tr');
+                let sales_data_heading  = [];
+                let sales_data_details = []
+                for (let i = 0; i < salesData.length; i++) {
+                    sales_data_heading= salesData[i].getElementsByTagName('td');
+                    for(let j=0;j<sales_data_heading.length;j++){
+                        sales_data_details.push(sales_data_heading[j].innerText)
+                    }
+                }
+                console.log(sales_data_details)
+            
                 const wb = XLSX.utils.book_new();
                 const ws = XLSX.utils.aoa_to_sheet(ws_data);
 
@@ -448,8 +448,6 @@
 
                 XLSX.writeFile(wb, "sales_report.xlsx");
             }
-
-
 
         </script>
 

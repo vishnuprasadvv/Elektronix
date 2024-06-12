@@ -177,9 +177,11 @@
 
 												<div class="accordion-summary" id="accordion-payment">
 
-													<div class="card">
-
-
+													<div class="card pb-1">
+														<div class="card-header" id="heading-3">
+														<input type="radio" name="payment_type" id="walletCheckbox" value="wallet">
+														<label for="walletCheckbox">Wallet <span>(Available wallet amount = <%=walletAmount%> )</span></label>
+													</div>
 													</div><!-- End .card -->
 
 													<div class="card pt-1">
@@ -345,6 +347,25 @@
 
 
 					</script>
+					<!-- <script>
+						const walletCheckbox = document.getElementById('walletCheckbox');
+						walletCheckbox.addEventListener('change',async (e)=>{
+							e.preventDefault();
+							let cartId = "<%=cart._id%>";
+							const response = await fetch ('/wallet-apply-checkout?cart_id='+ cartId, {
+								method:'POST',
+								headers: {
+									"Content-Type": "application/json",
+								},
+							})
+							if(response.ok){
+								location.href = '/checkout/' + cartId;
+								toastr.success('wallet amount applied')
+							}else{
+								throw new Error('Network response not ok!')
+							}
+						}),
+					</script> -->
 
 					<script>
 						toastr.options = {

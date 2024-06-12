@@ -108,6 +108,9 @@
 															const date =months[order.date_of_cancel.getMonth()]+" "+order.date_of_cancel.getDate()+", "+order.date_of_cancel.getFullYear() %>
 															<%= date %>
 														</small></div>
+														<div><small>Reason for cancellation : 
+															<%= order.cancellation_reason %>
+														</small></div>
 														<%}%>
 														<% if(order.date_of_shipped){%>
 														<div><small>Shipped on : 
@@ -223,19 +226,8 @@
 
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
     <%- include("partials/mobileview.ejs")%>
-
-    <!-- Plugins JS File -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/ssets/js/jquery.hoverIntent.min.js"></script>
-    <script src="/assets/js/jquery.waypoints.min.js"></script>
-    <script src="/assets/js/superfish.min.js"></script>
-    <script src="/assets/js/owl.carousel.min.js"></script>
-    <!-- Main JS File -->
-    <script src="/assets/js/main.js"></script>
-
+	<%- include("partials/bottom.ejs")%>
 	<script>
 		const form = document.getElementById('invoiceDownloadForm');
 		form.addEventListener('submit',async(e)=>{

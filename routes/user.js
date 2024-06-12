@@ -143,7 +143,7 @@ router.post('/add-to-cart/:id',handlePostAddCart);
 router.delete('/cart/:item/delete',handleDeleteItemCart)
 router.patch('/cart/:item/update',handleUpdateItemCart)
 
-router.get('/checkout/:id',isAuthenticated,handleGetCheckout)
+router.get('/checkout/:id',handleGetCheckout)//
 router.post('/checkout/:id',handlePostCheckout)
 
 //add new address in checkout 
@@ -177,7 +177,8 @@ router.post('/profile/orders/:id/create-payment',handlePatchOrderPaynow)
 //invoice download 
 router.post('/download-invoice/:id',handlePostInvoiceDownload)
 
-
+//apply wallet amount for checkout 
+router.post('/wallet-apply-checkout/:id',)
 
  
 module.exports= router ;

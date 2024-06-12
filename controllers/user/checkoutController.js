@@ -4,6 +4,7 @@ const AddressCollection = require('../../models/address')
 const OrdersCollection = require('../../models/orders')
 const ProductsCollection = require('../../models/products')
 const CouponCollection = require('../../models/coupons')
+const WalletCollection = require('../../models/wallet')
 require('dotenv').config()
 const { STRIPE_PUBLISHABLE_KEY, STRIPE_PRIVATE_KEY } = process.env
 const stripe = require('stripe')(STRIPE_PRIVATE_KEY)
@@ -48,7 +49,10 @@ const handleGetCheckout = async (req, res) => {
     const error = req.flash('error')
     const success = req.flash('success')
 
-    res.render('checkout', { title: 'Checkout', userLogged, addresses, cart, subTotal, overallTotalPrice, discountAmount, couponDescription, error, success })
+    //wallet 
+    const wallet = await WalletCollection.findOne({user:user._id})
+    
+    res.render('checkout', { title: 'Checkout', userLogged, addresses, cart, subTotal, overallTotalPrice, discountAmount, couponDescription, error, success, walletAmount : wallet.balance })
 }
 
 const handlePostCheckout = async (req, res) => {
@@ -193,7 +197,46 @@ const handlePostCheckout = async (req, res) => {
                 console.log("Order created in db with orderId , payment pending!!")
 
 
-            } else {
+            } else if(payment_type == 'wallet'){
+                //wallet 
+                const wallet = await WalletCollection.findOne({user:req.session.user})
+                if(total_amount > wallet.balance){
+                    console.log('insufficient balance')
+                    req.flash('error','Insufficient balance in wallet') 
+                    res.redirect('/checkout/' + cartId)
+                }else{
+                    const order_id = await generateOrderId()
+
+                    const order = new OrdersCollection({
+                        order_id, user_id: cart.userId, items: cart.items, payment_type, shipping_address: findAddress, payment_status: 'completed',
+                        sub_total, total_amount, shipping_charge, coupon_applied, discount_amount: discountAmount
+                    });
+                    //console.log(order)
+                    const orderData = await order.save();
+                    console.log('order saved to db');
+                    const reduceProductQty = await ProductsCollection.findByIdAndUpdate()
+                    for (let product of order.items) {
+
+                        let reduceProductQty = await ProductsCollection.findByIdAndUpdate(product.product_var_id.product._id, { $inc: { quantity: -product.quantity } })
+
+                    }
+
+                    //remove cart items 
+                    const removeCartItem = await CartCollection.findByIdAndUpdate(cartId, { items: [] })
+                    req.session.cart_qty = 0;
+                    //reduce and remove coupon 
+                    await CouponCollection.findOneAndUpdate({ code: coupon }, { $inc: { usageCount: 1 } })
+                    req.session.coupon = null;
+
+                    //reduce wallet balance 
+                    wallet.balance -= total_amount;
+                    wallet.transactions.push({type:'debit', amount:total_amount})
+                   await wallet.save();
+
+                    req.flash('success', "Order placed successfully!")
+                    res.redirect('/cart')
+                }
+                }else {
                 console.log('other payment method')
             }
 
@@ -236,6 +279,11 @@ const handlePostAddNewAddress = async (req,res)=>{
     }
 }
 
+// const handlePostApplyWallet = async (req,res)=>{
+//     const cartId = req.params.id;
+//     const cart = await CartCollection.findById(cartId);
+    
+// }
 module.exports = {
     handleGetCheckout,
     handlePostCheckout,

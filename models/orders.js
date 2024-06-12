@@ -41,7 +41,7 @@ const ordersSchema = new mongoose.Schema({
    ,
    payment_type:{
     type:String,
-    possibleValues:['online','cod']
+    possibleValues:['online','cod','wallet']
    },
    shipping_address:{
     name : {
