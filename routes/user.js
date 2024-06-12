@@ -143,7 +143,7 @@ router.post('/add-to-cart/:id',handlePostAddCart);
 router.delete('/cart/:item/delete',handleDeleteItemCart)
 router.patch('/cart/:item/update',handleUpdateItemCart)
 
-router.get('/checkout/:id',handleGetCheckout)//
+router.get('/checkout/:id',isAuthenticated,handleGetCheckout)
 router.post('/checkout/:id',handlePostCheckout)
 
 //add new address in checkout 
@@ -154,7 +154,7 @@ router.get('/profile/orders',isAuthenticated,handleGetOrders)
 router.get('/profile/orders/:id',isAuthenticated,handleGetOrder)
 router.post('/profile/orders/:id/cancel',handlePostCancelOrder)
 router.patch('/profile/orders/:id/return',handlePostReturnOrder);
-router.get('/profile/orders/:id/reason-cancel',handleGetCancelOrderConfirm)
+router.get('/profile/orders/:id/reason-cancel',isAuthenticated,handleGetCancelOrderConfirm)
 
 //wishlist 
 router.post('/add-to-wishlist/:id',handlePostAddWishlist);
