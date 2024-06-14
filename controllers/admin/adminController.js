@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const OrderCollection = require('../../models/orders')
 const ProductCollection = require('../../models/products')
+const ProductVariationCollection = require('../../models/productVariation')
 const UsersCollection = require('../../models/user')
 
 const admin = {
@@ -40,34 +41,38 @@ const handlePostAdminLogout = async (req, res) => {
 
 const handleGetAdminDashboard = async (req, res) => {
 
-
-
   try {
     const sales1 = await OrderCollection.aggregate([{ $match: { status: { $nin: ['cancelled', 'returned'] } } }, { $group: { _id: { $dateToString: { format: "%Y-%m-%d", date: "$date_of_order" } }, total: { $sum: '$total_amount' } } }, { $sort: { _id: 1 } }])
 
-
-    console.log(sales1)
-
-
-    const sales = JSON.stringify(sales1) 
-    //console.log(sales1)    
+    const sales = JSON.stringify(sales1)     
     //total sales 
     const totalSalesAmount = sales1.reduce((acc, val) => val.total + acc, 0)
-
     //total product qty 
     const totalproductsvariation = await ProductCollection.aggregate([{ $match: { isDeleted: false } }, { $group: { _id: '$name' } }, { $count: 'total' }])
 
     //total active users 
     const totalActiveUsers = await UsersCollection.find({ status: true, isVerified: true }).countDocuments()
 
-    //top 5 products 
-    //  const topProducts = await OrderCollection.aggregate([{$match:{status:{$nin:['cancelled','returned']}}},{$unwind:'$items'},{ $lookup: {
-    //   from: "ProductVariation",
-    //   localField: "items.product_var_id",
-    //   foreignField: "_id",
-    //   as: "productVariaton"
-    // }},{$group:{_id:"$productVariaton.product.name",total:{$sum:'$items.quantity'}}},{$sort:{_id:1}}])
-    //  console.log(topProducts)
+   // top 5 products 
+     const topProducts = await OrderCollection.aggregate([{$match:{status:{$nin:['cancelled','returned']}}},{ $unwind: '$items' }, // Deconstruct the items array
+      {
+        $group: {
+          _id: '$items.product_var_id',
+          totalQuantity: { $sum: '$items.quantity' },
+        },
+      },
+   
+      {
+        $lookup: {
+          from: 'ProductVariation', 
+          localField: '_id',
+          foreignField: '_id',
+          as: 'productVariationDetails',
+        },
+      }
+      ])
+      
+     console.log('top products' ,topProducts)
 
     res.render('admin/dashboard', { title: "Dashboard", sales, totalSalesAmount, totalproductsvariation, totalActiveUsers });
   } catch (error) {

@@ -63,7 +63,7 @@ router.route('/login').get(isAdminLogout,handleGetAdminLogin)
 router.post('/logout',handlePostAdminLogout);
 
 //admin dashboard
-router.get('/dashboard',isAdminAuth,handleGetAdminDashboard)
+router.get('/dashboard',handleGetAdminDashboard)
 //orders route
 router.get('/orders',isAdminAuth,handleGetOrders)
 router.get('/orders/:id/edit',isAdminAuth,handleGetOrderEdit) 
