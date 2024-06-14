@@ -9,180 +9,140 @@
 
     <body>
         <div class="page-wrapper">
-            <header class="header header-intro-clearance header-4">
+            <%- include('partials/header.ejs')%>
+                <main class="main bg-light">
 
-
-                <div class="header-middle">
-                    <div class="container">
-                        <div class="header-left">
-                            <button class="mobile-menu-toggler">
-                                <span class="sr-only"></span>
-                                <i class="icon-bars"></i>
-                            </button>
-
-                            <a href="/" class="logo">
-                                <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
-                            </a>
-                        </div><!-- End .header-left -->
-
-                        <div class="header-center">
-                            <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
-                                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                                <form action="#" method="get">
-                                    <div class="header-search-wrapper search-wrapper-wide">
-                                        <label for="q" class="sr-only"></label>
-                                        <button class="btn btn-primary" type="submit"><i
-                                                class="icon-search"></i></button>
-                                        <input type="search" class="form-control" name="q" id="q"
-                                            placeholder="Search product ..." required>
-                                    </div><!-- End .header-search-wrapper -->
-                                </form>
-                            </div><!-- End .header-search -->
-                        </div>
-
-                        <div class="header-right">
-                            <div class="dropdown compare-dropdown">
-                                <a href="/admin/profile" class="dropdown-toggle" role="button" aria-haspopup="true"
-                                    aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
-                                    <div class="icon">
-                                        <i class="icon-user"></i>
-                                        <p>Profile</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div><!--End .header-right -->
-                    </div><!--End .container -->
-                </div> <!--End .header-middle-->
-
-
-            </header><!-- End .header -->
-
-            <main class="main bg-light">
-
-                <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
-                    <div class="container">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/home">Home</a></li>
-
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                        </ol>
-                    </div><!-- End .container -->
-                </nav><!-- End .breadcrumb-nav -->
-
-                <div class="page-content">
-                    <div class="dashboard">
-
+                    <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
                         <div class="container">
-                            <div class="row g-0">
-                                <div class="col-lg-2 col-md-4 border bg-white">
-                                    <ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
-                                        <li class="nav-item p-3">
-                                            <a class="nav-link " id="tab-dashboard-link" data-toggle="tab"
-                                                href="/admin/dashboard" role="tab" aria-controls="tab-dashboard"
-                                                aria-selected="false">Dashboard</a>
-                                        </li>
-                                        <li class="nav-item p-3">
-                                            <a class="nav-link active" id="tab-address-link" href="/admin/sales"
-                                                role="tab" aria-controls="tab-address" aria-selected="true">Sales</a>
-                                        </li>
-                                        <li class="nav-item p-3 ">
-                                            <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab"
-                                                aria-controls="tab-orders" aria-selected="false">Products</a>
-                                        </li>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/home">Home</a></li>
 
-                                        <li class="nav-item p-3 ">
-                                            <a class="nav-link " id="tab-orders-link" href="/admin/category" role="tab"
-                                                aria-controls="tab-orders" aria-selected="false">Product category</a>
-                                        </li>
-                                        <li class="nav-item p-3 ">
-                                            <a class="nav-link " id="tab-orders-link" href="/admin/brands" role="tab"
-                                                aria-controls="tab-orders" aria-selected="false">Product Brands</a>
-                                        </li>
-                                        <li class="nav-item p-3">
-                                            <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab"
-                                                aria-controls="tab-downloads" aria-selected="false">Orders</a>
-                                        </li>
-                                        <li class="nav-item p-3">
-                                            <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab"
-                                                aria-controls="tab-address" aria-selected="false">Users</a>
-                                        </li>
-                                        <li class="nav-item p-3">
-                                            <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab"
-                                                aria-controls="tab-address" aria-selected="false">Coupons</a>
-                                        </li>
-                                        <li class="nav-item p-3">
-                                            <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab"
-                                                aria-controls="tab-address" aria-selected="false">Offers</a>
-                                        </li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </div><!-- End .container -->
+                    </nav><!-- End .breadcrumb-nav -->
 
-                                        <li class="nav-item pt-3 text-center">
-                                            <form action="/admin/logout" method="post">
-                                                <button type="submit" class="btn btn-outline-primary-2">
-                                                    <span>LOG OUT</span>
-                                                    <i class="icon-long-arrow-right"></i>
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <div class="page-content">
+                        <div class="dashboard">
 
-                                <div class="col-lg-10">
-                                    <div class="w-100 h-100 bg-white">
-                                        <div class="layout-container col-lg-12 p-3">
-                                            <div class="filter-form p-5  mb-3 border">
-                                                <div class="text-center mb-2">
-                                                    <h3>Filter Sales Report</h3>
-                                                </div>
-                                                <form id="filterForm">
-                                                    <div class="row">
-                                                        <div class="col-4">
-                                                            <label for="period">Period:</label>
-                                                            <select id="period" name="period" class="form-select fs-4">
-                                                                <option value="">Custom Date Range</option>
-                                                                <option value="daily">Last 1 Day</option>
-                                                                <option value="weekly">Last 1 Week</option>
-                                                                <option value="monthly">Last 1 Month</option>
-                                                                <option value="yearly">Last 1 Year</option>
-                                                            </select><br><br>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <label for="startDate">Start Date:</label>
-                                                            <input type="date" id="startDate" name="startDate"
-                                                                class="form-select fs-4"><br><br>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <label for="endDate">End Date:</label>
-                                                            <input type="date" id="endDate" name="endDate"
-                                                                class="form-select fs-4"><br><br>
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-primary">Generate
-                                                            Report</button>
-                                                    </div>
+                            <div class="container">
+                                <div class="row g-0">
+                                    <div class="col-lg-2 col-md-4 border bg-white">
+                                        <ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+                                            <li class="nav-item p-3">
+                                                <a class="nav-link" id="tab-dashboard-link" href="/admin/dashboard"
+                                                    role="tab" aria-controls="tab-dashboard"
+                                                    aria-selected="false">Dashboard</a>
+                                            </li>
+                                            <li class="nav-item p-3">
+                                                <a class="nav-link active" id="tab-address-link" href="/admin/sales"
+                                                    role="tab" aria-controls="tab-address"
+                                                    aria-selected="true">Sales</a>
+                                            </li>
+                                            <li class="nav-item p-3 ">
+                                                <a class="nav-link" id="tab-orders-link" href="/admin/products"
+                                                    role="tab" aria-controls="tab-orders"
+                                                    aria-selected="false">Products</a>
+                                            </li>
+
+                                            <li class="nav-item p-3 ">
+                                                <a class="nav-link " id="tab-orders-link" href="/admin/category"
+                                                    role="tab" aria-controls="tab-orders" aria-selected="false">Product
+                                                    category</a>
+                                            </li>
+                                            <li class="nav-item p-3 ">
+                                                <a class="nav-link " id="tab-orders-link" href="/admin/brands"
+                                                    role="tab" aria-controls="tab-orders" aria-selected="false">Product
+                                                    Brands</a>
+                                            </li>
+                                            <li class="nav-item p-3">
+                                                <a class="nav-link" id="tab-downloads-link" href="/admin/orders"
+                                                    role="tab" aria-controls="tab-downloads"
+                                                    aria-selected="false">Orders</a>
+                                            </li>
+                                            <li class="nav-item p-3">
+                                                <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab"
+                                                    aria-controls="tab-address" aria-selected="false">Users</a>
+                                            </li>
+                                            <li class="nav-item p-3">
+                                                <a class="nav-link" id="tab-address-link" href="/admin/coupon"
+                                                    role="tab" aria-controls="tab-address"
+                                                    aria-selected="false">Coupons</a>
+                                            </li>
+                                            <li class="nav-item p-3">
+                                                <a class="nav-link " id="tab-address-link" href="/admin/offers"
+                                                    role="tab" aria-controls="tab-address"
+                                                    aria-selected="false">Offers</a>
+                                            </li>
+
+                                            <li class="nav-item pt-3 text-center">
+                                                <form action="/admin/logout" method="post">
+                                                    <button type="submit" class="btn btn-outline-primary-2">
+                                                        <span>LOG OUT</span>
+                                                        <i class="icon-long-arrow-right"></i>
+                                                    </button>
                                                 </form>
-                                            </div>
-                                            <div class="report">
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                                <div id="reportContainer"></div>
-                                            </div>
-                                            <div id="salesReportDetailsTable">
-                                                <table class="table table-resposive table-bordered ">
-                                                    <thead class="table-info" id="salesReporthead">
+                                    <div class="col-lg-10">
+                                        <div class="w-100 h-100 bg-white">
+                                            <div class="layout-container col-lg-12 p-3">
+                                                <div class="filter-form p-5  mb-3 border">
+                                                    <div class="text-center mb-2">
+                                                        <h3>Filter Sales Report</h3>
+                                                    </div>
+                                                    <form id="filterForm">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <label for="period">Period:</label>
+                                                                <select id="period" name="period"
+                                                                    class="form-select fs-4">
+                                                                    <option value="">Custom Date Range</option>
+                                                                    <option value="daily">Last 1 Day</option>
+                                                                    <option value="weekly">Last 1 Week</option>
+                                                                    <option value="monthly">Last 1 Month</option>
+                                                                    <option value="yearly">Last 1 Year</option>
+                                                                </select><br><br>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="startDate">Start Date:</label>
+                                                                <input type="date" id="startDate" name="startDate"
+                                                                    class="form-select fs-4"><br><br>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <label for="endDate">End Date:</label>
+                                                                <input type="date" id="endDate" name="endDate"
+                                                                    class="form-select fs-4"><br><br>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="submit" class="btn btn-primary">Generate
+                                                                Report</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="report">
 
-                                                    <tbody id="salesDetails" class="text-center">
+                                                    <div id="reportContainer"></div>
+                                                </div>
+                                                <div id="salesReportDetailsTable">
+                                                    <table class="table table-resposive table-bordered ">
+                                                        <thead class="table-info" id="salesReporthead">
 
-                                                    </tbody>
-                                                </table>
+                                                        <tbody id="salesDetails" class="text-center">
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div><!-- End .col-lg-9 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .container -->
-                </div><!-- End .dashboard -->
+                                </div><!-- End .col-lg-9 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .container -->
+                    </div><!-- End .dashboard -->
         </div><!-- End .page-content -->
         </main><!-- End .main -->
 
@@ -352,9 +312,9 @@
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
 
-                // const totalSales = document.querySelector('.report td:nth-child(1)').textContent;
-                // const totalDiscount = document.querySelector('.report td:nth-child(2)').textContent;
-                // const orderCount = document.querySelector('.report td:nth-child(3)').textContent;
+                const totalSales = document.querySelector('.report td:nth-child(1)').textContent;
+                const totalDiscount = document.querySelector('.report td:nth-child(2)').textContent;
+                const orderCount = document.querySelector('.report td:nth-child(3)').textContent;
 
                 // doc.text('Sales Report', 10, 10);
                 // doc.text(`Total Sales: ${totalSales}`, 10, 20);
@@ -363,10 +323,21 @@
 
                 //sales report 
                 let yPosition = 10;
-
                 // Add title
                 doc.setFontSize(20);
                 doc.text('Sales Report', 105, yPosition, null, null, 'center');
+                yPosition += 10;
+                // Add summary
+                yPosition += 10;
+                doc.setFontSize(10);
+                doc.text('Total sales :' + totalSales, 10, yPosition);
+                yPosition += 10;
+
+                doc.setFontSize(10);
+                doc.text('Total discounts :' + totalDiscount, 10, yPosition);
+                yPosition += 10;
+                doc.setFontSize(10);
+                doc.text('Total orders :' + orderCount, 10, yPosition);
                 yPosition += 10;
 
                 // Add filters
@@ -382,7 +353,7 @@
 
                 // Add table headers
                 doc.setFontSize(8);
-                const headers = ["Order ID", "Date", "Customer","Product","Qty", "Price", "Sub Total", "Discount", "Total Amount"];
+                const headers = ["Order ID", "Date", "Customer", "Product", "Qty", "Price", "Sub Total", "Discount", "Total Amount"];
                 headers.forEach((header, index) => {
                     doc.text(header, 10 + (index * 22), yPosition);
                 });
@@ -398,25 +369,6 @@
                     }
                     yPosition += 2;
                 }
-
-                // Add summary
-                // yPosition += 10;
-                // doc.setFontSize(12);
-                // doc.text(document.getElementById('overall-sales-count').innerText, 10, yPosition);
-                // yPosition += 10;
-                // doc.text(document.getElementById('overall-order-amount').innerText, 10, yPosition);
-                // yPosition += 10;
-                // doc.text(document.getElementById('overall-discount').innerText, 10, yPosition);
-                // yPosition += 10;
-                // doc.text(document.getElementById('overall-coupon-discount').innerText, 10, yPosition);
-                // yPosition += 10;
-                // doc.text(document.getElementById('overall-gst').innerText, 10, yPosition);
-                // yPosition += 10;
-                // doc.text(document.getElementById('overall-revenue').innerText, 10, yPosition);
-
-                // Save the PDF
-
-
                 doc.save('sales_report.pdf');
             }
 
@@ -431,16 +383,16 @@
                 ];
                 //add sales data 
                 const salesData = document.getElementById('salesDetails').getElementsByTagName('tr');
-                let sales_data_heading  = [];
+                let sales_data_heading = [];
                 let sales_data_details = []
                 for (let i = 0; i < salesData.length; i++) {
-                    sales_data_heading= salesData[i].getElementsByTagName('td');
-                    for(let j=0;j<sales_data_heading.length;j++){
+                    sales_data_heading = salesData[i].getElementsByTagName('td');
+                    for (let j = 0; j < sales_data_heading.length; j++) {
                         sales_data_details.push(sales_data_heading[j].innerText)
                     }
                 }
                 console.log(sales_data_details)
-            
+
                 const wb = XLSX.utils.book_new();
                 const ws = XLSX.utils.aoa_to_sheet(ws_data);
 
