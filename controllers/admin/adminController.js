@@ -70,7 +70,7 @@ const handleGetAdminDashboard = async (req, res) => {
           as: 'productVariationDetails',
         },
       }
-      ])
+      ]) 
       
      console.log('top products' ,topProducts)
 
