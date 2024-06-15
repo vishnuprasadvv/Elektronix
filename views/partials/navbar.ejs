@@ -2,20 +2,17 @@
 <header class="header header-intro-clearance header-4">
     <div class="header-top">
         <div class="container">
-           
-
             <div class="header-right">
-                <% if(userLogged == undefined){%>
-                <ul class="top-menu">
-                    <li>
-                        <ul>
-                            <li><a href="/login">Sign in / Sign up</a></li>
-                        </ul>
-                    </li>
-                </ul><!-- End .top-menu -->
-                <%}%>
+                <% if(userLogged==undefined){%>
+                    <ul class="top-menu">
+                        <li>
+                            <ul>
+                                <li><a href="/login">Sign in / Sign up</a></li>
+                            </ul>
+                        </li>
+                    </ul><!-- End .top-menu -->
+                    <%}%>
             </div><!-- End .header-right -->
-
         </div><!-- End .container -->
     </div><!-- End .header-top -->
 
@@ -26,8 +23,8 @@
                     <span class="sr-only"></span>
                     <i class="icon-bars"></i>
                 </button>
-                <a href=<% if(userLogged == undefined) {%>"/"<%}else{%>
-                    "/home"<%}%> class="logo">
+                <a href=<% if(userLogged==undefined) {%>"/"<%}else{%>
+                        "/home"<%}%> class="logo">
                     <img src="/assets/images/logo.png" alt="Molla Logo" width="165" height="52">
                 </a>
             </div><!-- End .header-left -->
@@ -39,7 +36,8 @@
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="search" class="sr-only"></label>
                             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            <input type="search" class="form-control" name="search" id="search" placeholder="Search product ..." required>
+                            <input type="search" class="form-control" name="search" id="search"
+                                placeholder="Search product ..." required>
                         </div><!-- End .header-search-wrapper -->
                     </form>
                 </div><!-- End .header-search -->
@@ -47,32 +45,35 @@
 
             <div class="header-right">
                 <div class="dropdown compare-dropdown">
-                    <a href="/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" data-display="static" title="Profile" aria-label="Profile">
+                    <a href="/profile" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"
+                        data-display="static" title="Profile" aria-label="Profile">
                         <div class="icon">
                             <i class="icon-user"></i>
                         </div>
                         <p>Profile</p>
                     </a>
-                    
                 </div><!-- End .compare-dropdown -->
 
                 <div class="wishlist">
                     <a href="/wishlist" title="Wishlist">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
-                            <span class="wishlist-count badge"><%= wishlist_qty%></span>
+                            <span class="wishlist-count badge">
+                                <%= wishlist_qty%>
+                            </span>
                         </div>
                         <p>Wishlist</p>
                     </a>
                 </div><!-- End .compare-dropdown -->
 
                 <div class="dropdown cart-dropdown">
-                    <a href="/cart" class="dropdown-toggle" role="button"  aria-haspopup="true" aria-expanded="false" data-display="static">
+                    <a href="/cart" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"
+                        data-display="static">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
-                                <span class="cart-count"><%= cart_qty%></span>
-                                
-                            
+                            <span class="cart-count">
+                                <%= cart_qty%>
+                            </span>
                         </div>
                         <p>Cart</p>
                     </a>
@@ -91,7 +92,7 @@
                                     </span>
                                 </div>End .product-cart-details -->
 
-                                <!-- <figure class="product-image-container">
+                    <!-- <figure class="product-image-container">
                                     <a href="product.html" class="product-image">
                                         <img src="assets/images/products/cart/product-1.jpg" alt="product">
                                     </a>
@@ -99,7 +100,7 @@
                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
                             </div><!-- End .product -->
 
-                            <!-- <div class="product">
+                    <!-- <div class="product">
                                 <div class="product-cart-details">
                                     <h4 class="product-title">
                                         <a href="product.html">Blue utility pinafore denim dress</a>
@@ -110,7 +111,7 @@
                                         x $76.00
                                     </span>
                                 </div>End .product-cart-details -->
-<!-- 
+                    <!-- 
                                 <figure class="product-image-container">
                                     <a href="product.html" class="product-image">
                                         <img src="assets/images/products/cart/product-2.jpg" alt="product">
@@ -118,15 +119,15 @@
                                 </figure>
                                 <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
                             </div><!-- End .product -->
-                        <!-- </div>End .cart-product -->
+                    <!-- </div>End .cart-product -->
 
-                        <!-- <div class="dropdown-cart-total">
+                    <!-- <div class="dropdown-cart-total">
                             <span>Total</span>
 
                             <span class="cart-total-price">$160.00</span>
                         </div><!-- End .dropdown-cart-total -->
 
-                        <!-- <div class="dropdown-cart-action">
+                    <!-- <div class="dropdown-cart-action">
                             <a href="cart.html" class="btn btn-primary">View Cart</a>
                             <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .dropdown-cart-total -->
@@ -140,10 +141,10 @@
         <div class="container">
             <div class="header-left">
                 <div class="dropdown category-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-display="static" title="Browse Categories">
                         Browse Categories <i class="icon-angle-down"></i>
                     </a>
-
                     <div class="dropdown-menu">
                         <nav class="side-nav">
                             <ul class="menu-vertical sf-arrows">
@@ -164,20 +165,15 @@
                 <nav class="main-nav" id="main_nav">
                     <ul class="menu sf-arrows">
                         <li class="">
-                            
-                            <a href=<% if(userLogged == undefined) {%>"/"<%}else{%>
-                                "/home"<%}%> >
-                                Home</a>
-                            
+                            <a href=<% if(userLogged==undefined) {%>"/"<%}else{%>
+                                    "/home"<%}%> >
+                                        Home</a>
                         </li>
-                    
-                        <li >
+                        <li>
                             <a href="/list" class="sf">Product</a>
                         </li>
-                        
                         <li>
                             <a href="#" class="sf-with-ul">Pages</a>
-
                             <ul>
                                 <li> <a href="about.html" class="sf">About</a></li>
                                 <li><a href="contact.html" class="sf">Contact</a> </li>
@@ -187,25 +183,18 @@
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
             </div><!-- End .header-center -->
-
-            
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->
 </header><!-- End .header -->
 <script>
- document.getElementById('main_nav')
- jQuery(function($) {
-  var path = window.location.href; 
-  // because the 'href' property of the DOM element is the absolute path
-  console.log(path)
-  $('#main_nav ul li a').each(function() {
-    console.log(this.href)
-    console.log(this)
-    if (this.href === path) {
-      $(this.parentElement).addClass('megamenu-container active');
-      
-    }
-  });
-  
-});
+    document.getElementById('main_nav')
+    jQuery(function ($) {
+        var path = window.location.href;
+
+        $('#main_nav ul li a').each(function () {
+            if (this.href === path) {
+                $(this.parentElement).addClass('megamenu-container active');
+            }
+        });
+    });
 </script>

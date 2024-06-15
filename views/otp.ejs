@@ -17,15 +17,7 @@
 
         
         <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('/assets/images/backgrounds/login-bg.jpg')">
-            <% if( alert.length>0){%>
-				
-				<div class="d-flex flex-column align-items-center justify-content-center">
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-						<%= alert %>
-						<button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-					  </div>
-				</div>
-				<%}%>
+           
             <div class="container">
                 <div class="form-box">
                     <div class="form-tab">
@@ -39,7 +31,6 @@
                             <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2 ">
                                 <form id="verifyOtpForm" action="/verify/<%= userId %>" method="post"> 
                                     
-
                                     <div class="form">
                                         <label for="otpverification">Enter OTP here</label>
                                         <input type="number" class="form-control" id="otpverification" name="otp" required>
@@ -79,7 +70,6 @@
 
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-    
 <script>
     
     function timer(n){
@@ -108,22 +98,54 @@
         }
     })
 
-  
+  const formVerify = document.getElementById('verifyOtpForm')
+  formVerify.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    let toast_alert = ''
+    const userId = '<%= userId %>'
+    const data = new URLSearchParams();
+for (const pair of new FormData(formVerify)) {
+    data.append(pair[0], pair[1]);
+}
+    const response = await fetch('/verify/'+userId, {
+        method :'POST',
+        body:data
+    })
+    if(response.ok){
+        const jsonResponse = await response.json();
+        if(jsonResponse=='success'){
+            document.location.href = '/login'
+        }else{
+            toast_alert = jsonResponse;
+            console.log(toast_alert)
+        }
+   
+    
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": true,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    if(toast_alert!=''){
+        toastr.error(toast_alert)
+    }
+    }else{
+        console.log(error)
+    }
+  })
    
  
 </script>
-    <!-- Plugins JS File -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
-
-</html>
+<%- include('partials/bottom.ejs')%>

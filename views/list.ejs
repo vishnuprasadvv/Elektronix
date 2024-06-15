@@ -179,24 +179,13 @@
 												<div class="custom-control custom-checkbox d-flex flex-row">
 													<div class="pe-2">
 														<input type="checkbox" class="custom-control-input"
-															id="featured_filter">
+															class="filter-featured" id="filter-featured" value="featured">
 													</div>
 													<div class="">
 														<label class="custom-control-label"
-															for="featured_filter">Featured</label>
+															for="filter-featured">Featured</label>
 													</div>
 												</div><!-- End .custom-checkbox -->
-												<div class="custom-control custom-checkbox d-flex flex-row">
-													<div class="pe-2">
-														<input type="checkbox" class="custom-control-input"
-															id="outofstock_filter">
-													</div>
-													<div class="">
-														<label class="custom-control-label" for="outofstock_filter">Out
-															of stock</label>
-													</div>
-												</div><!-- End .custom-checkbox -->
-
 												<div class="widget widget-collapsible">
 													<h3 class="widget-title">
 														<a data-toggle="collapse" href="" role="button"
@@ -205,15 +194,12 @@
 														</a>
 													</h3><!-- End .widget-title -->
 
-
-
 													<div class="collapse show" id="widget-1">
 														<div class="widget-body">
 															<div class="filter-items filter-items-count ">
 																<% for(let category of fullCategories){ %>
 																	<div class="filter-item">
-																		<div
-																			class="custom-control custom-checkbox d-flex flex-row">
+																		<div class="custom-control custom-checkbox d-flex flex-row">
 																			<div class="pe-2">
 																				<input type="checkbox"
 																					class="filter-category"
@@ -239,53 +225,7 @@
 													</div><!-- End .collapse -->
 
 												</div><!-- End .widget -->
-												<!-- 
-        						<div class="widget widget-collapsible">
-    								<h3 class="widget-title">
-									    <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
-									        Size
-									    </a>
-									</h3>End .widget-title
-
-									<div class="collapse show" id="widget-2">
-										<div class="widget-body">
-											<div class="filter-items">
-												<div class="filter-item">
-													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" id="size-1">
-														<label class="custom-control-label" for="size-1">XS</label>
-													</div><!-- End .custom-checkbox -->
-												<!-- </div>
-
-											</div>
-										</div>
-									</div>
-        						</div>  -->
-
-												<!-- <div class="widget widget-collapsible">
-    								<h3 class="widget-title">
-									    <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
-									        Colour
-									    </a>
-									</h3>
-
-									<div class="collapse show" id="widget-3">
-										<div class="widget-body">
-											<div class="filter-colors">
-												<a href="#" style="background: #b87145;"><span class="sr-only"></span></a>
-												
-											</div>
-										</div>
-									</div>
-        						</div> -->
-
-
-												<div class="widget widget-collapsible">
-													<h3 class="widget-title">
-														<a data-toggle="collapse" href="" role="button"
-															aria-expanded="true" aria-controls="widget-4">
-															Brand
-														</a>
+											
 													</h3><!-- End .widget-title -->
 													<div class="collapse show" id="widget-4">
 														<div class="widget-body">
@@ -375,7 +315,6 @@
 					const sortSelect = document.getElementById('sortby');
 					//const filterInput = document.getElementById('filterInput');
 
-
 					sortSelect.addEventListener('change', updateProducts);
 					// filterInput.addEventListener('input', updateProducts);
 
@@ -404,57 +343,21 @@
 
 					let selectedCategories = Array.from(document.querySelectorAll('.filter-category:checked')).map(input => input.value);
 					let selectedBrands = Array.from(document.querySelectorAll('.filter-brands:checked')).map(input => input.value);
-
-
+					//let featured = document.querySelector('#filter-featured:checked').value
+					
 					if ('URLSearchParams' in window) {
 						const url = new URL(window.location)
 						url.searchParams.set("brands", selectedBrands)
 						url.searchParams.set("categories", selectedCategories)
+						//url.searchParams.set("featured", featured)
 
 
 						history.pushState(null, '', url);
 						//window.location.search = searchParams.toString();
 						window.location.href = `${window.location.search}`
 					}
-
-					// let searchQuery = '/list?'
-
-					// if(selectedCategories.length>0){
-					// 	searchQuery += 'categories=' + selectedCategories.join(',')+ '&';
-					// }
-					// 		if ('URLSearchParams' in window) {
-					// var searchParams = new URLSearchParams(window.location.search);
-					// searchParams.set("categories", selectedCategories);
-
-
-					// }
-
-					// if(selectedBrands.length>0){
-					// 	searchQuery += 'brands=' + selectedBrands.join(',')+ '&';
-					// }
-
-
+					
 				})
 
 			</script>
-
-
-			<!-- Plugins JS File -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/bootstrap.bundle.min.js"></script>
-			<script src="assets/js/jquery.hoverIntent.min.js"></script>
-			<script src="assets/js/jquery.waypoints.min.js"></script>
-			<script src="assets/js/superfish.min.js"></script>
-			<script src="assets/js/owl.carousel.min.js"></script>
-			<script src="assets/js/wNumb.js"></script>
-			<script src="assets/js/bootstrap-input-spinner.js"></script>
-			<script src="assets/js/jquery.magnific-popup.min.js"></script>
-			<script src="assets/js/nouislider.min.js"></script>
-			<!-- Main JS File -->
-			<script src="assets/js/main.js"></script>
-	</body>
-
-
-	<!-- molla/category.html  22 Nov 2019 10:02:52 GMT -->
-
-	</html>
+<%- include('partials/bottom.ejs')%>
