@@ -50,24 +50,18 @@ const successPaymentRoute = async (req,res)=>{
                 req.flash('success','order placed')
                 //empty cart
                 if(cart_id){
-
                     const removeCartItem = await CartCollection.findByIdAndUpdate(cart_id,{items:[]})
                     req.session.cart_qty=0;
                     //reduce product qty 
-                   
                     for( let product of order.items){
-                     
                      let reduceProductQty = await ProductsCollection.findByIdAndUpdate(product.product_var_id.product._id,{$inc:{quantity:-product.quantity}})
-                     
                     }
                     res.redirect('/cart')
                 }else{
                     req.flash('success','Order payment completed')
                     res.redirect('/profile/orders')
                 }
-
             }
-           
         }
 
     } catch (error) {

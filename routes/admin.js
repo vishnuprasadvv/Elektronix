@@ -63,7 +63,7 @@ router.route('/login').get(isAdminLogout,handleGetAdminLogin)
 router.post('/logout',handlePostAdminLogout);
 
 //admin dashboard
-router.get('/dashboard',handleGetAdminDashboard)
+router.get('/dashboard',isAdminAuth,handleGetAdminDashboard)
 //orders route
 router.get('/orders',isAdminAuth,handleGetOrders)
 router.get('/orders/:id/edit',isAdminAuth,handleGetOrderEdit) 
@@ -121,8 +121,8 @@ router.get('/coupon/:id/edit',handleGetEditCoupon)
 router.put('/coupon/:id/edit',handlePutEditCoupon)
 
 //sales 
-router.get('/sales',handleGetSales)
-router.get('/sales/filter',handleGetFilterSales)
+router.get('/sales',isAdminAuth,handleGetSales)
+router.get('/sales/filter',isAdminAuth,handleGetFilterSales)
 
 //offers
 router.get('/offers',isAdminAuth,handleGetOffers)

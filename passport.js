@@ -10,10 +10,6 @@ passport.use(
         scope:['profile','email']
     },
     (accessToken, refreshToken, profile, done) => {
-        // Logic to find or create user based on profile data (replace with your implementation)
-        //console.log('Google profile:', profile);
-      
-        // Assuming you have a User model with email as a unique identifier
         UserCollection.findOne({ email: profile.emails[0].value }).then(existingUser => {
           if (existingUser) {
             console.log('already present')
