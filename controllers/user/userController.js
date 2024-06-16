@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 
 
-
 //nodemailer - mail send
 const sendVerifyMail = async (name, email, user_id, res) => {
     try {

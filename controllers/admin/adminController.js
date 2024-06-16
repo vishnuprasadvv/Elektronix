@@ -54,27 +54,74 @@ const handleGetAdminDashboard = async (req, res) => {
     const totalActiveUsers = await UsersCollection.find({ status: true, isVerified: true }).countDocuments()
 
    // top 5 products 
-     const topProducts = await OrderCollection.aggregate([{$match:{status:{$nin:['cancelled','returned']}}},{ $unwind: '$items' }, // Deconstruct the items array
+    const topProducts = await OrderCollection.aggregate([{$match:{status:{$nin:['cancelled','returned']}}},{ $unwind: '$items' }, // Deconstruct the items array
       {
         $group: {
           _id: '$items.product_var_id',
           totalQuantity: { $sum: '$items.quantity' },
         },
       },
-   
       {
-        $lookup: {
-          from: 'ProductVariation', 
-          localField: '_id',
+         $lookup: {
+          from: 'productvariations', 
+          localField:'_id',
           foreignField: '_id',
           as: 'productVariationDetails',
         },
-      }
+    },
+    {$unwind:'$productVariationDetails'},
+    {$lookup:{
+      from:'products',
+      localField:'productVariationDetails.product',
+      foreignField:'_id',
+      as:"productsDetails"
+    }},
+    {$unwind:'$productsDetails'},
+    {$sort:{totalQuantity:-1}},
+    {$limit:5}
       ]) 
-      
-     console.log('top products' ,topProducts)
 
-    res.render('admin/dashboard', { title: "Dashboard", sales, totalSalesAmount, totalproductsvariation, totalActiveUsers });
+    //top categories 
+    const topCategories = await OrderCollection.aggregate([{$match:{status:{$nin:['cancelled','returned']}}},{ $unwind: '$items' }, // Deconstruct the items array
+      {
+        $group: {
+          _id: '$items.product_var_id',
+          totalQuantity: { $sum: '$items.quantity' },
+        },
+      },
+      {
+         $lookup: {
+          from: 'productvariations', 
+          localField:'_id',
+          foreignField: '_id',
+          as: 'productVariationDetails',
+        },
+    },
+    {$unwind:'$productVariationDetails'},
+    {$lookup:{
+      from:'products',
+      localField:'productVariationDetails.product',
+      foreignField:'_id',
+      as:"productsDetails"
+    }},
+    {$unwind:'$productsDetails'},
+    {$group:{
+      _id:'$productsDetails.category',
+      categorySalesQty:{$sum:'$totalQuantity'}
+    }},
+    {$lookup:{
+      from:'categories',
+      localField:'_id',
+      foreignField:'_id',
+      as:'categoriesDetails'
+    }},
+    {$unwind:'$categoriesDetails'}, 
+    {$sort:{totalQuantity:-1}},
+    {$limit:5}
+      ]) 
+
+   console.log('top categories',topCategories)
+    res.render('admin/dashboard', { title: "Dashboard", sales, totalSalesAmount, totalproductsvariation, totalActiveUsers ,topProducts,topCategories});
   } catch (error) {
     console.log(error)
   }

@@ -39,193 +39,237 @@
 
   <body>
     <div class="page-wrapper">
-     <%- include('partials/header.ejs')%>
+      <%- include('partials/header.ejs')%>
 
-      <main class="main bg-light">
+        <main class="main bg-light">
 
-        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
-          <div class="container">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/home">Home</a></li>
-
-              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
-          </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
-
-        <div class="page-content">
-          <div class="dashboard">
-
+          <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
             <div class="container">
-              <div class="row g-0">
-                <div class="col-lg-2 col-md-4 border bg-white">
-                  <ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
-                    <li class="nav-item p-3">
-                      <a class="nav-link active " id="tab-dashboard-link" data-toggle="tab" href="/admin/dashboard"
-                        role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
-                    </li>
-                    <li class="nav-item p-3">
-                      <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab"
-                        aria-controls="tab-address" aria-selected="false">Sales</a>
-                    </li>
-                    <li class="nav-item p-3 ">
-                      <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab"
-                        aria-controls="tab-orders" aria-selected="false">Products</a>
-                    </li>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
 
-                    <li class="nav-item p-3 ">
-                      <a class="nav-link " id="tab-orders-link" href="/admin/category" role="tab"
-                        aria-controls="tab-orders" aria-selected="false">Product category</a>
-                    </li>
-                    <li class="nav-item p-3 ">
-                      <a class="nav-link " id="tab-orders-link" href="/admin/brands" role="tab"
-                        aria-controls="tab-orders" aria-selected="false">Product Brands</a>
-                    </li>
-                    <li class="nav-item p-3">
-                      <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab"
-                        aria-controls="tab-downloads" aria-selected="false">Orders</a>
-                    </li>
-                    <li class="nav-item p-3">
-                      <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab"
-                        aria-controls="tab-address" aria-selected="false">Users</a>
-                    </li>
-                    <li class="nav-item p-3">
-                      <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab"
-                        aria-controls="tab-address" aria-selected="false">Coupons</a>
-                    </li>
-                    <li class="nav-item p-3">
-                      <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab"
-                        aria-controls="tab-address" aria-selected="false">Offers</a>
-                    </li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              </ol>
+            </div><!-- End .container -->
+          </nav><!-- End .breadcrumb-nav -->
 
-                    <li class="nav-item pt-3 text-center">
-                      <form action="/admin/logout" method="post">
-                        <button type="submit" class="btn btn-outline-primary-2">
-                          <span>LOG OUT</span>
-                          <i class="icon-long-arrow-right"></i>
-                        </button>
-                      </form>
-                    </li>
-                  </ul>
-                </div>
+          <div class="page-content">
+            <div class="dashboard">
 
-                <div class="col-lg-10">
-                  <div class="w-100 h-100 bg-white">
-
-                    <!-- Content wrapper -->
-                    <div class="content-wrapper">
-                      <!-- Content -->
-
-                      <div class="container-xxl flex-grow-1 container-p-y">
-                        <div class="row p-4">
-                          <div class="col-lg-12 col-md-4 order-1 d-flex justify-content-center">
-                           
-                              <div class="col-lg-3 col-md-6 col-6 mb-4">
-                                  <div class="card-body pt-1" style="background: #eef8ff; border-radius: 10px;">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                      <div class="avatar flex-shrink-0">
-                                        <img src="/admin/assets/img/icons/unicons/products-2.png" style="width: 76px;" alt="chart success"
-                                          class="rounded p-1" />
-                                      </div>
-                                    </div>
-                                    <span class="fw-semibold d-block mb-1">Total products variations</span>
-                                    <h3 class="card-title mb-2"><%=totalproductsvariation[0].total%>
-                                    </h3>
-                                  </div>
-                              </div>
-
-                              <div class="col-lg-3 col-md-12 col-6 mb-4">
-                                  <div class="card-body pt-1" style="background: #eef8ff; border-radius: 10px;">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                      <div class="avatar flex-shrink-0">
-                                        <img src="/admin/assets/img/icons/unicons/sales-3.png" style="width: 76px;" alt="Credit Card"
-                                          class="rounded" />
-                                      </div>
-                                    </div>
-                                    <span class="fw-semibold d-block mb-1">Sales</span>
-                                    <h3 class="card-title text-nowrap mb-2">₹ <%=totalSalesAmount%>
-                                    </h3>
-                                  </div>
-                              </div>
-                              <div class="col-lg-3 col-md-12 col-6 mb-4">
-                                  <div class="card-body pt-1" style="background: #eef8ff; border-radius: 10px;">
-                                    <div class="card-title d-flex align-items-start justify-content-between">
-                                      <div class="avatar flex-shrink-0">
-                                        <img src="/admin/assets/img/icons/unicons/users.png" style="width: 76px;"
-                                          alt="Credit Card" class="rounded" />
-                                      </div>
-                                    </div>
-                                    <span class="d-block mb-1">Total active users </span>
-                                    <h3 class="card-title text-nowrap mb-2">
-                                      <%=totalActiveUsers%>
-                                    </h3>
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div class="fluid-container p-3">
-                          <div class="border rounded p-3">
-                            <select id="filter" class="form-select p-3 fs-5 fw-bold border-primary">
-                              <option value="year">Yearly</option>
-                              <option value="month">Monthly</option>
-                              <option value="week">Weekly</option>
-                              <option value="day">Daily</option>
-                            </select>
-
-                            <canvas id="salesChart"></canvas>
-                            <input type="hidden" id="sales" value="<%=sales%>">
-                          </div>
-
-                        </div>
-                        <!-- / Content -->
-                        <div class="row">
-                          <!-- Order Statistics -->
-                          <!-- <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                <div class="card h-100">
-                  <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                    <div class="card-title mb-0">
-                      <h5 class="m-0 me-2">Top 5 Products</h5>
-                    </div>
-                    
-                  </div>
-                  <div class="card-body">
-                    
-                    <ul class="p-0 m-0">
-
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded bg-label-primary"
-                            ><i class="bx bx-mobile-alt"></i
-                          ></span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">Electronic</h6>
-                          </div>
-                          <div class="user-progress">
-                            <small class="fw-semibold">82.5k</small>
-                          </div>
-                        </div>
+              <div class="container">
+                <div class="row g-0">
+                  <div class="col-lg-2 col-md-4 border bg-white">
+                    <ul class="nav nav-dashboard flex-column mb-3 mb-md-4 mt-md-2" role="tablist">
+                      <li class="nav-item p-3">
+                        <a class="nav-link active " id="tab-dashboard-link" data-toggle="tab" href="/admin/dashboard"
+                          role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
                       </li>
-                      
+                      <li class="nav-item p-3">
+                        <a class="nav-link " id="tab-address-link" href="/admin/sales" role="tab"
+                          aria-controls="tab-address" aria-selected="false">Sales</a>
+                      </li>
+                      <li class="nav-item p-3 ">
+                        <a class="nav-link" id="tab-orders-link" href="/admin/products" role="tab"
+                          aria-controls="tab-orders" aria-selected="false">Products</a>
+                      </li>
+
+                      <li class="nav-item p-3 ">
+                        <a class="nav-link " id="tab-orders-link" href="/admin/category" role="tab"
+                          aria-controls="tab-orders" aria-selected="false">Product category</a>
+                      </li>
+                      <li class="nav-item p-3 ">
+                        <a class="nav-link " id="tab-orders-link" href="/admin/brands" role="tab"
+                          aria-controls="tab-orders" aria-selected="false">Product Brands</a>
+                      </li>
+                      <li class="nav-item p-3">
+                        <a class="nav-link" id="tab-downloads-link" href="/admin/orders" role="tab"
+                          aria-controls="tab-downloads" aria-selected="false">Orders</a>
+                      </li>
+                      <li class="nav-item p-3">
+                        <a class="nav-link" id="tab-address-link" href="/admin/users" role="tab"
+                          aria-controls="tab-address" aria-selected="false">Users</a>
+                      </li>
+                      <li class="nav-item p-3">
+                        <a class="nav-link" id="tab-address-link" href="/admin/coupon" role="tab"
+                          aria-controls="tab-address" aria-selected="false">Coupons</a>
+                      </li>
+                      <li class="nav-item p-3">
+                        <a class="nav-link " id="tab-address-link" href="/admin/offers" role="tab"
+                          aria-controls="tab-address" aria-selected="false">Offers</a>
+                      </li>
+
+                      <li class="nav-item pt-3 text-center">
+                        <form action="/admin/logout" method="post">
+                          <button type="submit" class="btn btn-outline-primary-2">
+                            <span>LOG OUT</span>
+                            <i class="icon-long-arrow-right"></i>
+                          </button>
+                        </form>
+                      </li>
                     </ul>
                   </div>
-                </div>
-              </div> -->
-                        </div>
-                        <div class="content-backdrop fade"></div>
-                      </div>
-                      <!-- Content wrapper -->
 
+                  <div class="col-lg-10">
+                    <div class="w-100 h-100 bg-white">
+
+                      <!-- Content wrapper -->
+                      <div class="content-wrapper">
+                        <!-- Content -->
+
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                          <div class="row p-4">
+                            <div class="col-lg-12 col-md-4 order-1 d-flex justify-content-center">
+
+                              <div class="col-lg-3 col-md-6 col-6 mb-4">
+                                <div class="card-body pt-1" style="background: #eef8ff; border-radius: 10px;">
+                                  <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                      <img src="/admin/assets/img/icons/unicons/products-2.png" style="width: 76px;"
+                                        alt="chart success" class="rounded p-1" />
+                                    </div>
+                                  </div>
+                                  <span class="fw-semibold d-block mb-1">Total products variations</span>
+                                  <h3 class="card-title mb-2">
+                                    <%=totalproductsvariation[0].total%>
+                                  </h3>
+                                </div>
+                              </div>
+
+                              <div class="col-lg-3 col-md-12 col-6 mb-4">
+                                <div class="card-body pt-1" style="background: #eef8ff; border-radius: 10px;">
+                                  <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                      <img src="/admin/assets/img/icons/unicons/sales-3.png" style="width: 76px;"
+                                        alt="Credit Card" class="rounded" />
+                                    </div>
+                                  </div>
+                                  <span class="fw-semibold d-block mb-1">Sales</span>
+                                  <h3 class="card-title text-nowrap mb-2">₹ <%=totalSalesAmount%>
+                                  </h3>
+                                </div>
+                              </div>
+                              <div class="col-lg-3 col-md-12 col-6 mb-4">
+                                <div class="card-body pt-1" style="background: #eef8ff; border-radius: 10px;">
+                                  <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                      <img src="/admin/assets/img/icons/unicons/users.png" style="width: 76px;"
+                                        alt="Credit Card" class="rounded" />
+                                    </div>
+                                  </div>
+                                  <span class="d-block mb-1">Total active users </span>
+                                  <h3 class="card-title text-nowrap mb-2">
+                                    <%=totalActiveUsers%>
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="fluid-container p-3">
+                            <div class="border rounded p-3">
+                              <select id="filter" class="form-select p-3 fs-5 fw-bold border-primary">
+                                <option value="year">Yearly</option>
+                                <option value="month">Monthly</option>
+                                <option value="week">Weekly</option>
+                                <option value="day">Daily</option>
+                              </select>
+
+                              <canvas id="salesChart"></canvas>
+                              <input type="hidden" id="sales" value="<%=sales%>">
+                            </div>
+
+                          </div>
+                          <!-- / Content -->
+                          <div class="row p-3">
+                            <!-- Top products -->
+                            <div class="col-md-12 col-lg-6 col-xl-6  mb-4 mt-2">
+                              <div class="card h-100 border p-2" style="border-radius: 10px; background: #eef8ff;">
+                                <div class="card-header d-flex align-items-center justify-content-center pb-0 ">
+                                  <div class="card-title">
+                                    <h5 class="m-2 mb-3 fw-bold">Top Selling Products</h5>
+                                  </div>
+                                </div>
+                                <div class=" d-flex align-items-center justify-content-center ">
+                                  <ol class="p-0 m-0 ">
+                                    <% for (let item of topProducts){ let number=topProducts.indexOf(item)+1; %>
+                                      <li class="d-flex pb-2 ">
+                                        <div class="d-flex w-100 align-items-center justify-content-center">
+                                          <div class=" col-1">
+                                            <span class="">
+                                              <%=number%>.
+                                            </span>
+                                          </div>
+                                          <div class=" col-2 ">
+                                            <img src="/productImages/<%= item.productsDetails.image[0]%>"
+                                              style="width: 40px;" alt="">
+                                          </div>
+                                          <div class=" col-7 ">
+                                            <span class="">
+                                              <%=item.productsDetails.name%>
+                                            </span>
+                                          </div>
+                                          <div class=" col-2">
+                                            <span class="fw-bold">
+                                              <%=item.totalQuantity%>
+                                            </span>
+                                            <small class="fs-6">Qty</small>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <%}%>
+                                  </ol>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Top categories -->
+                            <div class="col-md-12 col-lg-6 col-xl-6  mb-4 mt-2">
+                              <div class="card h-100 border p-2 " style="border-radius: 10px; background: #eef8ff;">
+                                <div class="card-header d-flex align-items-center justify-content-center pb-0 ">
+                                  <div class="card-title">
+                                    <h5 class="m-2 mb-3 fw-bold">Top Selling Categories</h5>
+                                  </div>
+                                </div>
+                                <div class=" d-flex align-items-center justify-content-center ">
+                                  <ol class="p-0 m-0 ">
+                                    <% for (let item of topCategories){ let number=topCategories.indexOf(item)+1; %>
+                                      <li class="d-flex pb-2 ">
+                                        <div class="d-flex w-100 align-items-center justify-content-center">
+                                          <div class=" col-2">
+                                            <span class="">
+                                              <%=number%>.
+                                            </span>
+                                          </div>
+                                          <div class=" col-8">
+                                            <span class="">
+                                              <%=item.categoriesDetails.name%>
+                                            </span>
+                                          </div>
+                                          <div class=" col-3">
+                                            <span class="fw-bold">
+                                              <%=item.categorySalesQty%>
+                                            </span>
+                                            <small class="fs-6">Qty</small>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <%}%>
+                                  </ol>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="content-backdrop fade"></div>
+                        </div>
+                        <!-- Content wrapper -->
+
+                      </div>
                     </div>
-                  </div>
-                </div><!-- End .col-lg-9 -->
-              </div><!-- End .row -->
-            </div><!-- End .container -->
-          </div><!-- End .dashboard -->
-        </div><!-- End .page-content -->
-      </main><!-- End .main -->
+                  </div><!-- End .col-lg-9 -->
+                </div><!-- End .row -->
+              </div><!-- End .container -->
+            </div><!-- End .dashboard -->
+          </div><!-- End .page-content -->
+        </main><!-- End .main -->
 
 
 
