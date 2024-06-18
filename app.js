@@ -48,7 +48,7 @@ app.use('/auth',authRoute)
 
 //set view engine
 app.set('view engine' , 'ejs')
-
+ 
 //set static path
 app.use(express.static('public'))
 
