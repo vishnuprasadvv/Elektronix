@@ -59,6 +59,7 @@ app.use('/admin',adminRouter)
 //home route 
 //set static path
 app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/',async(req,res)=>{
     
