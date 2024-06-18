@@ -40,17 +40,18 @@ app.use(express.urlencoded({extended:true}))
 app.use(passport.initialize())
 app.use(passport.session())
 
+//set view engine
+app.set('view engine' , 'ejs')
+ 
+//set static path
+app.use(express.static('public'))
+
 //middleware cart quantity 
 app.use(middlewareCartQty)
 app.use(middlewareWishlistQty)
 app.use('/auth',authRoute)
 
 
-//set view engine
-app.set('view engine' , 'ejs')
- 
-//set static path
-app.use(express.static('public'))
 
 //user router
 app.use('/',userRouter)
