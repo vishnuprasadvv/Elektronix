@@ -96,7 +96,7 @@
                                                 <tr class="text-center align-items-center">
                                                     <td><%=  currentPage* limit -(limit) + i+1 %></td>
                                                     
-                                                    <td><img src=" http://localhost:5000/productImages/<%= products[i].image[0] %>" alt="" width="50px"></td>
+                                                    <td><img src="/productImages/<%= products[i].image[0] %>" alt="" width="50px"></td>
                                                     <td class="col-2"><%= products[i].name %></td>
                                                     <td ><%= products[i].category.name %></td>
                                                     <td> <%if(products[i].quantity>0){%>

@@ -1,4 +1,5 @@
 const express= require('express');
+require('dotenv').config() 
 const app = express();
 const port= process.env.PORT || 5000;
 const userRouter=  require('./routes/user')
@@ -8,7 +9,6 @@ const path= require('path')
 const cors= require('cors')
 const ProductsCollection= require('./models/products')
 const nocache= require('nocache')
-require('dotenv').config() 
 const passport = require('passport')
 const authRoute = require('./routes/auth')
 const middlewareCartQty = require('./middlewares/cartQuantity')
