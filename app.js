@@ -43,9 +43,6 @@ app.use(passport.session())
 //set view engine
 app.set('view engine' , 'ejs')
  
-//set static path
-app.use(express.static('public'))
-
 //middleware cart quantity 
 app.use(middlewareCartQty)
 app.use(middlewareWishlistQty)
@@ -60,7 +57,8 @@ app.use('/',userRouter)
 app.use('/admin',adminRouter)
 
 //home route 
-
+//set static path
+app.use(express.static(path.join(__dirname,'public')))
 
 app.use('/',async(req,res)=>{
     
