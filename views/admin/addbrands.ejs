@@ -1,46 +1,8 @@
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= title %></title>
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Molla - Bootstrap eCommerce Template">
-    <meta name="author" content="p-themes">
-    <!-- Favicon -->
-   
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon16x16.png">
-
-    <meta name="apple-mobile-web-app-title" content="Molla">
-    <meta name="application-name" content="Molla">
-    <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
-    <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/skins/skin-demo-4.css">
-    <link rel="stylesheet" href="/assets/css/demos/demo-4.css">
-
-
-</head>
-
+<%- include('partials/head.ejs') %>
 <body>
     <div class="page-wrapper">
         <%- include('partials/header.ejs')%>
-
         <main class="main bg-light">
-        	
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 ">
                 <div class="container">
                     <ol class="breadcrumb">
@@ -101,16 +63,6 @@
                         </div>
                       <!-- CONTENT -->
 	                		<div class="col-lg-10 ">
-                                <% if( alert.length>0){%>
-				
-                                    <div class="d-flex flex-column align-items-center justify-content-center">
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <%= alert %>
-                                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-                                          </div>
-                                    </div>
-                                    <%}%>
-                                  
 	                			<div class="w-100 h-100">
                                     <div class="fluid-container p-3 ">
                                         <form action="/admin/brands/add" method="post" id="categoryFormSubmit">
@@ -194,22 +146,30 @@
     }
  }
 </script>
-
-    <!-- Plugins JS File -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="/assets/js/jquery.waypoints.min.js"></script>
-    <script src="/assets/js/superfish.min.js"></script>
-    <script src="/assets/js/owl.carousel.min.js"></script>
-    <script src="/assets/js/bootstrap-input-spinner.js"></script>
-    <script src="/assets/js/jquery.plugin.min.js"></script>
-    <script src="/assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="/assets/js/jquery.countdown.min.js"></script>
-    <!-- Main JS File -->
-    <script src="/assets/js/main.js"></script>
-
-</body>
-
-
-</html>
+<%- include('partials/bottom.ejs') %>
+<script>
+		toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": true,
+	  "progressBar": false,
+	  "positionClass": "toast-top-center",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "300",
+	  "hideDuration": "1000",
+	  "timeOut": "5000",
+	  "extendedTimeOut": "1000",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+	   $(document).ready(()=>{
+		
+		let toast_error = '<%= alert%>'
+		if(toast_error !=''){
+			toastr.error(toast_error)
+		}
+	   })
+</script>

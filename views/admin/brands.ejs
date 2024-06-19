@@ -1,5 +1,4 @@
 <%- include('partials/head.ejs') %>
-
 <body>
     <div class="page-wrapper">
         <%- include('partials/header.ejs')%>
@@ -159,18 +158,7 @@
 
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
-
-    <!-- Plugins JS File -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/superfish.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <%- include('partials/bottom.ejs') %>
 
     <script>
 		toastr.options = {
@@ -203,8 +191,3 @@
 		}
 	   })
 	</script>
-
-</body>
-
-
-</html>

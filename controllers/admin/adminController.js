@@ -4,7 +4,7 @@ const app = express();
 const OrderCollection = require('../../models/orders')
 const ProductCollection = require('../../models/products')
 const ProductVariationCollection = require('../../models/productVariation')
-const UsersCollection = require('../../models/user')
+const UsersCollection = require('../../models/user')   
 
 const admin = {
   email: 'admin@gmail.com',

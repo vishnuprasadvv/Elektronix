@@ -42,7 +42,7 @@ const handlePostAddBrand= async (req,res)=>{
     console.log(isBrandPresent)
   if(isBrandPresent){
     req.flash('alert',"Brand name already present!")
-    res.redirect('/admin/brand/add')
+    res.redirect('/admin/brands/add')
     console.log('brand already present')
   }else{
     const brand= new BrandsCollection({
@@ -83,6 +83,7 @@ const handlePostEditBrand = async (req,res)=>{
         }    
     }else{
         const editBrands= await BrandsCollection.findByIdAndUpdate({_id:req.params.id},{$set:{name,status}})
+        req.flash('success','Brand name changed')
         res.redirect('/admin/brands')
     }
     
