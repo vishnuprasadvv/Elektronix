@@ -76,6 +76,7 @@ const handlePostEditBrand = async (req,res)=>{
     if(checkBrands){
         if(checkBrands._id== req.params.id){
             const editBrands= await BrandsCollection.findByIdAndUpdate({_id:req.params.id},{$set:{name,status}})
+            req.flash('success','brand details changed')
             res.redirect('/admin/brands')
         }else{
             req.flash('alert',"Brand name already present")
