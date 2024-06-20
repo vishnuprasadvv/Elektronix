@@ -12,8 +12,9 @@ const stripe = require('stripe')(STRIPE_PRIVATE_KEY)
 const handleGetCheckout = async (req, res) => {
     const userLogged = req.session.isAuth;
     const cart = await CartCollection.findById(req.params.id).populate('userId').populate({ path: 'items.product_var_id', populate: { path: 'product' } })
-    const user = await UserCollection.findById(cart.userId)
-    const addresses = await AddressCollection.find({ user: cart.userId })
+    const user = await UserCollection.findById(cart.userId);
+    const addresses = await AddressCollection.find({ user: cart.userId });
+    
     const totalOfEachItem = cart.items.map(item => item.product_var_id.product.price * item.quantity);
     let subTotal = totalOfEachItem.reduce((acc, val) => val + acc, 0);
 
@@ -50,6 +51,7 @@ const handleGetCheckout = async (req, res) => {
     const success = req.flash('success')
 
     //wallet 
+    
     const wallet = await WalletCollection.findOne({user:user._id})
     
     res.render('checkout', { title: 'Checkout', userLogged, addresses, cart, subTotal, overallTotalPrice, discountAmount, couponDescription, error, success, walletAmount : wallet.balance })

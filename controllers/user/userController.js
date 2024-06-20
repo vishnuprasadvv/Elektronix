@@ -3,6 +3,7 @@ const ProductCollection = require('../../models/products')
 const CartCollection = require('../../models/cart')
 const WishlistCollection = require('../../models/wishlist')
 const token = require('../../models/token');
+const WalletCollection = require('../../models/wallet')
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 
@@ -147,6 +148,11 @@ const handlePostSignup = async (req, res) => {
             //const user = new Collection.insertMany({name,email,phone,address,password})
             const user = new userCollection({ name, email, phone, password })
             const userData = await user.save()
+
+            //create wallet
+            const newWallet = new WalletCollection({user:userData._id});
+            const newWalletData = await newWallet.save();
+            
             if (userData) {
                 await sendVerifyMail(req.body.name, req.body.email, userData._id, res);
                 res.redirect('/verify?id=' + userData._id)
