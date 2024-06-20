@@ -347,25 +347,19 @@
 
 
 					</script>
-					<!-- <script>
-						const walletCheckbox = document.getElementById('walletCheckbox');
-						walletCheckbox.addEventListener('change',async (e)=>{
+					<script>
+						const checkoutSubmit = document.getElementById('checkoutSubmit');
+						checkoutSubmit.addEventListener('submit',(e)=>{
 							e.preventDefault();
-							let cartId = "<%=cart._id%>";
-							const response = await fetch ('/wallet-apply-checkout?cart_id='+ cartId, {
-								method:'POST',
-								headers: {
-									"Content-Type": "application/json",
-								},
-							})
-							if(response.ok){
-								location.href = '/checkout/' + cartId;
-								toastr.success('wallet amount applied')
+							let address = '<%= addresses%>';
+							if(address.length==0){
+								e.preventDefault();
+								console.log('please add an address')
 							}else{
-								throw new Error('Network response not ok!')
+								checkoutSubmit.submit();
 							}
-						}),
-					</script> -->
+						})
+					</script>
 
 					<script>
 						toastr.options = {
