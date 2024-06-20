@@ -63,9 +63,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/',async(req,res)=>{
     
-    const latestProducts= await ProductsCollection.aggregate([{$sort:{added_date:-1}},{$limit:5}])
-    const trendProducts = await ProductsCollection.find({}).limit(4)
-    const products = await ProductsCollection.find().populate('category')
+    const latestProducts= await ProductsCollection.aggregate([{ $match: { isDeleted: false } },{$sort:{added_date:-1}},{$limit:5}])
+    const trendProducts = await ProductsCollection.find({isDeleted:false}).limit(4)
+    const products = await ProductsCollection.find({isDeleted:false}).populate('category')
     const userLogged= req.session.isAuth;
     
     res.render('home' ,{title:"Elektronix",latestProducts,trendProducts,products,userLogged})
