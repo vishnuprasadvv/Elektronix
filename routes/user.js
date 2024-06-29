@@ -180,5 +180,5 @@ router.post('/download-invoice/:id',handlePostInvoiceDownload)
 //apply wallet amount for checkout 
 router.post('/wallet-apply-checkout/:id',)
 
- 
+
 module.exports= router ;

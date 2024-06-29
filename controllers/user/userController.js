@@ -423,5 +423,5 @@ module.exports = {
     handleGetForgotOtp,
     handlePostForgotOtp,
     handleGetForgotPassReset,
-    handlePostForgotPassReset
+    handlePostForgotPassReset,
 }

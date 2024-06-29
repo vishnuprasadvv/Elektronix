@@ -187,8 +187,8 @@ const handlePostCheckout = async (req, res) => {
                             quantity: item.quantity
                         }
                     }),
-                    success_url: 'http://localhost:5000/success?session_id={CHECKOUT_SESSION_ID}&order_id=' + order._id + '&cart_id=' + cartId,
-                    cancel_url: 'http://localhost:5000/failed?order_id=' + order._id
+                    success_url: 'https://elektronix.co.in/success?session_id={CHECKOUT_SESSION_ID}&order_id=' + order._id + '&cart_id=' + cartId,
+                    cancel_url: 'https://elektronix.co.in/failed?order_id=' + order._id
                 })
                 res.redirect(session.url)
 

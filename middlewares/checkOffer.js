@@ -9,7 +9,7 @@ const updateOfferDetails = async (req,res,next)=>{
         const inValidCategoryOffers = await CategoryOffersCollection.find({expired:false,$or:[{startDate:{$gte: currentDate}}, {endDate:{$lte: currentDate}},{isDeleted:true}]})
        // console.log(inValidCategoryOffers)
         if(inValidCategoryOffers.length<=0){
-            //console.log('not offers found')
+           // console.log('not offers found')
         }else{
             
             const categoryIds = await inValidCategoryOffers.map(offer=> offer.category);

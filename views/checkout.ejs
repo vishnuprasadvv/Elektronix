@@ -354,7 +354,7 @@
 							let address = '<%= addresses%>';
 							if(address.length==0){
 								e.preventDefault();
-								console.log('please add an address')
+								toastr.error("Please add an address");
 							}else{
 								checkoutSubmit.submit();
 							}
