@@ -4,11 +4,12 @@ const app = express();
 const OrderCollection = require('../../models/orders')
 const ProductCollection = require('../../models/products')
 const ProductVariationCollection = require('../../models/productVariation')
-const UsersCollection = require('../../models/user')   
+const UsersCollection = require('../../models/user') 
+require('dotenv').config();
 
 const admin = {
-  email: 'admin@gmail.com',
-  password: '123456'
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASS
 }
 
 //flash for flash messages
