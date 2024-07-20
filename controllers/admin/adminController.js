@@ -5,7 +5,7 @@ const OrderCollection = require('../../models/orders')
 const ProductCollection = require('../../models/products')
 const ProductVariationCollection = require('../../models/productVariation')
 const UsersCollection = require('../../models/user') 
-require('dotenv').config();
+require('dotenv').config(); 
 
 const admin = {
   email: process.env.ADMIN_EMAIL,
