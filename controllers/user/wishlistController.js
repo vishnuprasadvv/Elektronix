@@ -9,7 +9,8 @@ const handleGetWishlist =async (req,res)=>{
     const success = req.flash('success');
     const alert = req.flash('alert')
     const warning = req.flash('warning')
-    const wishlistItems = await WishlistCollection.findOne({userId:user}).populate({path:'items.product_var_id',populate:{path:'product'}})
+    const wishlistItems = await WishlistCollection.findOne({userId:user}).populate({path:'items.product_var_id',populate:{path:'product'}}) || []
+    
     res.render('wishlist' ,{title:"Wishlists",userLogged,wishlistItems,success,alert,warning})
     
 }

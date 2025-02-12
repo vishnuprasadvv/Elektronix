@@ -40,7 +40,6 @@ const handleGetOrder= async (req,res)=>{
     const order_id= req.params.id;
     const userLogged= req.session.isAuth;
     const order= await OrdersCollection.findById(order_id).populate({path:'items.product_var_id',populate:{path:'product'}});
-    
     res.render('profile-orderdetails',{title:'Order details', order,userLogged})
 }
 
