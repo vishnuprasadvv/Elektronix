@@ -219,6 +219,12 @@ const handlePostLogin = async (req, res) => {
             req.session.wishlist_qty = wishlist_qty;
         }
 
+        console.log(req.session.returnTo)
+        if(req.session.returnTo) {
+            const redirectUrl = req.session.returnTo;
+            delete req.session.returnTo;
+            return res.redirect(redirectUrl)
+        }
 
         res.redirect('/home')
     }

@@ -58,9 +58,23 @@ function isAuthenticated(req,res,next){
             req.session.isAuth = true;
             req.session.user= req.user._id
         }
-        next()
+       return next()
     }else{
-        res.redirect('/login')
+
+        if(req.method === 'GET'){
+            req.session.returnTo = req.originalUrl
+        }else{
+            const referer = req.get('Referer')
+            if (referer) {
+                const refererUrl = new URL(referer);
+                const path = refererUrl.pathname + refererUrl.search;
+                req.session.returnTo = path;
+              } else {
+                // If no Referer header, fall back to the current URL
+                req.session.returnTo = req.originalUrl;
+              }
+        } 
+        return res.redirect('/login')
     }
 }
 
@@ -138,7 +152,7 @@ router.get('/forgot-resetpassword',isAuthenticated,handleGetForgotPassReset)
 router.patch('/forgot-resetpassword/:id',handlePostForgotPassReset)
 
 //cart
-router.post('/add-to-cart/:id',handlePostAddCart);
+router.post('/add-to-cart/:id', isAuthenticated, handlePostAddCart);
 
 router.delete('/cart/:item/delete',handleDeleteItemCart)
 router.patch('/cart/:item/update',handleUpdateItemCart)
@@ -157,8 +171,8 @@ router.patch('/profile/orders/:id/return',handlePostReturnOrder);
 router.get('/profile/orders/:id/reason-cancel',isAuthenticated,handleGetCancelOrderConfirm)
 
 //wishlist 
-router.post('/add-to-wishlist/:id',handlePostAddWishlist);
-router.delete('/wishlist/:id',handleDeleteWishlist)
+router.post('/add-to-wishlist/:id',isAuthenticated,handlePostAddWishlist);
+router.delete('/wishlist/:id',isAuthenticated, handleDeleteWishlist)
 
 //wallet 
 router.get('/profile/wallet',isAuthenticated,handleGetWallet)

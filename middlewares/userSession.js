@@ -13,6 +13,7 @@ function isAuthenticated(req,res,next){
     if(req.session.isAuth){
         next()
     }else{
+        req.session.returnTo = req.originalUrl
         res.redirect('/login')
     }
 }
